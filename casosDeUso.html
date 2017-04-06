@@ -61,7 +61,12 @@
                 <li>Formato de entrada y salida: JSON</li>
                <li>Roles: Sin restricción de rol</li>
                <li>Requisitos: No disponible</li>
-                <li>Resultados: se devuelven todos los inmuebles ofertados que cumplan con filtros de búsqueda</li>
+               <li>
+                      <p>resultado:</p>
+                      <ul>
+                          <li>inmuebles: lista de objetos de tipo inmueble</li>
+                      </ul>
+               </li>
                 </ul>
              </li>
    
@@ -93,6 +98,31 @@
                <li>Roles: Sin restricción de rol</li>
                <li>Requisitos: No disponible</li>
                 <li>Resultados: se devuelve la información pertinente a las oficinas</li>
+                </ul>
+             </li>
+
+
+ <!-- Caso de Uso: VER Perfil -->
+             
+           <li>
+              <p></p>
+              <ul>
+               <li>URL: '/VPerfil'</li>
+               <li>Método: GET</li>
+                <li>Formato de entrada y salida: JSON</li>
+               <li>Roles: Sin restricción de rol</li>
+               <li>Requisitos: No disponible</li>
+                <li> Objeto de usuario con los siguientes campos:
+                      <ul>       
+                           <li>correo</li>     
+                           <li>clave</li>
+                           <li>nombres</li>
+                           <li>apellidos</li>
+                           <li>númeroDeCédula</li>
+                           <li>dirección</li>
+                           <li>teléfono</li>
+                      </ul>
+                </li>
                 </ul>
              </li>
 
@@ -132,7 +162,7 @@
                <li>Requisitos: No disponible</li>
                  <li>Resultados:
                       <ul>       
-                                      <li>id_inmueble </li> 
+                            <li>id_inmueble </li> 
                         				<li>descripción</li>
                         				<li>precio</li>
                         				<li>dirección</li>
@@ -224,6 +254,10 @@
                                               Long. mínima: <code>1</code>. 
                                       </li>
                                       <li>dirección -  
+                                              Requerido. 
+                                              Long. mínima: <code>1</code>. 
+                                      </li>
+                                      <li>teléfono -  
                                               Requerido. 
                                               Long. mínima: <code>1</code>. 
                                       </li>
