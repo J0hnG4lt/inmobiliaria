@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+</head>
+<body>
+<h2>API</h2>
+<p><span style="line-height: 1.2; font-family: Arial; font-size: 15px;">Los administradores, los usuarios, los compradores y los vendedores pueden ingresar a la aplicación</span></p>
+<ol>
+  
+  <!-- Caso de Uso: IDENTIFICAR USUARIO -->
+           <li>
+            <p></p>
+            <ul>
+             <li>URL: '/identificacion/AIdentificar'</li>
+             <li>Método: POST</li>
+              <li>Formato de entrada y salida: JSON</li>
+                  <li>Parámetros POST:
+                      <ul>       
+                                      <li>correo -  
+                                              Requerido. 
+                                              Long. mínima: <code>1</code>. 
+                                      </li>     
+                                      <li>clave -  
+                                              Requerido. 
+                                              Long. mínima: <code>1</code>. 
+                                      </li>
+                      </ul>
+                     </li>
+             <li>Roles: Sin restricción de rol</li>
+             <li>Requisitos: No disponible</li>
+              </ul>
+          <p><strong>Cursos posibles</strong></p>
+              <ol>
+               <li>
+                   <p>resultado:</p>
+                    <ul>
+                         <li>label:'/VPerfil',</li>
+                         <li> msg:"Usuario Identificado".</li>
+                    </ul>
+                      <p>Se continúa con el rol del usuario.</p>
+               </li>
+               <li>
+                      <p>resultado:</p>
+                      <ul>
+                          <li>label:''/identificacion/AIdentificar',</li>
+                          <li> msg:"Usuario no se pudo identificar".</li>
+                      </ul>
+               </li>
+
+              </ol>
+             </li>
+ 
+ <!-- Caso de Uso: VER INMUEBLES -->
+             
+           <li>
+              <p></p>
+              <ul>
+               <li>URL: '/inmuebles/VInmuebles'</li>
+               <li>Método: GET</li>
+                <li>Formato de entrada y salida: JSON</li>
+               <li>Roles: Sin restricción de rol</li>
+               <li>Requisitos: No disponible</li>
+                <li>Resultados: se devuelven todos los inmuebles ofertados que cumplan con filtros de búsqueda</li>
+                </ul>
+             </li>
+   
+
+  
+ <!-- Caso de Uso: VER DETALLES DE INMUEBLE -->
+             <!-- es más fácil considerar a cada inmueble como una oferta de inmueble. 
+			         De esta manera, es posible que salga varias veces el mismo inmueble
+ 					de manera consecutiva sin que haya problemas. Así no se requiere el catastro.
+			-->
+           <li>
+              <p></p>
+              <ul>
+               <li>URL: '/Inmuebles/VDetalles/id_inmueble'</li>
+               <li>Método: GET</li>
+                <li>Formato de entrada y salida: JSON</li>
+                  <li>Parámetros GET:
+                      <ul>       
+                                      <li>id_inmueble </li> 
+                                      <li> Requerido. </li>
+                                      <li>Long. mínima: <code>1</code>. </li>
+                      </ul>
+                     </li>
+               <li>Roles: Sin restricción de rol</li>
+               <li>Requisitos: No disponible</li>
+                 <li>Resultados:
+                      <ul>       
+                                      <li>id_inmueble </li> 
+                        				<li>descripción</li>
+                        				<li>precio</li>
+                        				<li>dirección</li>
+                        				<li>áreaConstrucción</li>
+                        				<li>áreaTerreno</li>
+                        				<li>númeroHabitaciones</li>
+                        				<li>númeroBaños</li>
+                        				<li>númeroEstacionamientos</li>
+                        				<li>tipoInmueble</li>
+                        				<li>fotoPrincipal</li>
+                        				<li>fotosSecundarias</li>
+                      </ul>
+                </li>
+               </ul>
+             </li>
+ 
+  <!-- Caso de Uso: HACER OFERTA DE COMPRA -->
+           <li>
+            <p></p>
+            <ul>
+             <li>URL: '/inmuebles/AHacerOfertaDeCompra/'</li>
+             <li>Método: POST</li>
+              <li>Formato de entrada y salida: JSON</li>
+                  <li>Parámetros POST:
+                      <ul>       
+                                      <li>correo -  
+                                              Requerido. 
+                                              Long. mínima: <code>1</code>. 
+                                      </li>     
+                                      <li>id_inmueble -  
+                                              Requerido. 
+                                              Long. mínima: <code>1</code>. 
+                                      </li>
+                      </ul>
+                     </li>
+             <li>Roles: Cliente</li>
+             <li>Requisitos: Usuario registrado con sesión iniciada.</li>
+              </ul>
+          <p><strong>Cursos posibles</strong></p>
+              <ol>
+               <li>
+                   <p>resultado:</p>
+                    <ul>
+                         <li>label:'/inmuebles/VDetalles/id_inmueble',</li>
+                         <li> msg:"Oferta de Compra Hecha".</li>
+                    </ul>
+                      <p>Se continúa con el rol del usuario.</p>
+               </li>
+               <li>
+                      <p>resultado:</p>
+                      <ul>
+                         <li>label:'/inmuebles/VDetalles/id_inmueble',</li>
+                         <li> msg:"No se pudo hacer la oferta de compra".</li>
+                      </ul>
+               </li>
+
+              </ol>
+             </li>
+ 
+  
+ 
+    <!-- Caso de Uso: REGISTRAR USUARIO -->
+           <li>
+            <p></p>
+            <ul>
+             <li>URL: '/identificacion/ARegistrar'</li>
+             <li>Método: POST</li>
+              <li>Formato de entrada y salida: JSON</li>
+                  <li>Parámetros POST:
+                      <ul>       
+                                      <li>correo -  
+                                              Requerido. 
+                                              Long. mínima: <code>1</code>. 
+                                      </li>     
+                                      <li>clave -  
+                                              Requerido. 
+                                              Long. mínima: <code>1</code>. 
+                                      </li>
+                                      <li>nombres -  
+                                              Requerido. 
+                                              Long. mínima: <code>1</code>. 
+                                      </li>
+                                      <li>apellidos -  
+                                              Requerido. 
+                                              Long. mínima: <code>1</code>. 
+                                      </li>
+                                      <li>númeroDeCédula -  
+                                              Requerido. 
+                                              Long. mínima: <code>1</code>. 
+                                      </li>
+                                      <li>dirección -  
+                                              Requerido. 
+                                              Long. mínima: <code>1</code>. 
+                                      </li>
+                      </ul>
+                     </li>
+             <li>Roles: Sin restricción de rol</li>
+             <li>Requisitos: No disponible</li>
+              </ul>
+          <p><strong>Cursos posibles</strong></p>
+              <ol>
+               <li>
+                   <p>resultado:</p>
+                    <ul>
+                         <li>label:'/VPerfil',</li>
+                         <li> msg:"Usuario Registrado".</li>
+                    </ul>
+                      <p>Se continúa con el rol del usuario.</p>
+               </li>
+               <li>
+                      <p>resultado:</p>
+                      <ul>
+                          <li>label:''/identificacion/ARegistrar',</li>
+                          <li> msg:"Usuario no se pudo registrar".</li>
+                      </ul>
+               </li>
+
+              </ol>
+             </li>
+  
+
+  
+   <!-- Caso de Uso: HACER OFERTA DE VENTA -->
+           <li>
+            <p></p>
+            <ul>
+             <li>URL: '/inmuebles/AHacerOfertaDeVenta'</li>
+             <li>Método: POST</li>
+              <li>Formato de entrada y salida: JSON</li>
+                  <li>Parámetros POST:
+                      <ul>       
+                                      <li>correo: Requerido</li>
+                        				<li>descripción: Requerido</li>
+                        				<li>precio: Requerido</li>
+                        				<li>dirección: Requerido</li>
+                        				<li>áreaConstrucción: Requerido</li>
+                        				<li>áreaTerreno: Requerido</li>
+                        				<li>númeroHabitaciones: Requerido</li>
+                        				<li>númeroBaños: Requerido</li>
+                        				<li>númeroEstacionamientos: Requerido</li>
+                        				<li>tipoInmueble: Requerido</li>
+                        				<li>fotoPrincipal: Requerido</li>
+                        				<li>fotosSecundarias: Opcional</li>
+                      </ul>
+                     </li>
+             <li>Roles: Vendedor</li>
+             <li>Requisitos: Usuario registrado con sesión iniciada.</li>
+              </ul>
+          <p><strong>Cursos posibles</strong></p>
+              <ol>
+               <li>
+                   <p>resultado:</p>
+                    <ul>
+                         <li>label:'/Inmuebles/VDetalles/id_inmueble',</li>
+                         <li> msg:"Oferta de Venta Hecha".</li>
+                    </ul>
+                      <p>Se continúa con el rol del usuario.</p>
+               </li>
+               <li>
+                      <p>resultado:</p>
+                      <ul>
+                         <li>label:'/inmuebles/AHacerOfertaDeVenta',</li>
+                         <li> msg:"No se pudo hacer la oferta de venta".</li>
+                      </ul>
+               </li>
+
+              </ol>
+             </li>
+  
+  
+  
+</ol>
+</body>
+</html>
