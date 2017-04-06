@@ -261,6 +261,60 @@
   
   
   
+     <!-- Caso de Uso: 	BUSCAR CON FILTROS -->
+           <li>
+            <p></p>
+            <ul>
+             <li>URL: '/inmuebles/ABuscarInmuebles'</li>
+             <li>Método: POST</li>
+              <li>Formato de entrada y salida: JSON</li>
+                  <li>Parámetros POST:
+                      <ul>       
+
+                        				<li>descripción: opcional</li>
+                        				<li>precioCotaInferior: opcional</li>
+                        				<li>precioCotaSuperior: opcional</li>
+                        				<li>dirección: opcional</li>
+                        				<li>áreaConstrucciónCotaInferior: opcional</li>
+                        				<li>áreaConstrucciónCotaSuperior: opcional</li>
+                        				<li>áreaTerrenoCotaInferior: opcional</li>
+										<li>áreaTerrenoCotaSuperior: opcional</li>
+                        				<li>númeroHabitacionesCotaInferior: opcional</li>
+										<li>númeroHabitacionesCotaSuperior: opcional</li>
+                        				<li>númeroBañosCotaInferior: opcional</li>
+                        				<li>númeroBañosCotaSuperior: opcional</li>
+                        				<li>númeroEstacionamientosCotaInferior: opcional</li>
+                        				<li>númeroEstacionamientosCotaSuperior: opcional</li>
+                        				<li>tipoInmueble: opcional</li>
+                      </ul>
+                     </li>
+             <li>Roles: Sin restricción de rol</li>
+             <li>Requisitos: sin requisitos</li>
+              </ul>
+          <p><strong>Cursos posibles</strong></p>
+              <ol>
+               <li>
+                   <p>resultado:</p>
+                    <ul>
+                         <li>label:'/inmuebles/VInmuebles',</li>
+                         <li> msg:"Inmuebles Filtrados".</li>
+                    </ul>
+                      <p>Se continúa con el rol del usuario.</p>
+               </li>
+               <li>
+                      <p>resultado:</p>
+                      <ul>
+                         <li>label:'/inmuebles/VInmuebles',</li>
+                         <li> msg:"No se pudieron filtrar los inmuebles".</li>
+                      </ul>
+               </li>
+
+              </ol>
+             </li>
+  
+  
+  
+  
 </ol>
 </body>
 </html>
