@@ -254,6 +254,70 @@
              </li>
   
 
+
+    <!-- Caso de Uso: ACTUALIZAR PERFIL DE USUARIO -->
+           <li>
+            <p></p>
+            <ul>
+             <li>URL: '/identificacion/AModificarPerfil'</li>
+             <li>Método: POST</li>
+              <li>Formato de entrada y salida: JSON</li>
+                  <li>Parámetros POST:
+                      <ul>       
+                                      <li>correo -  
+                                              Opcional. 
+                                              Long. mínima: <code>1</code>. 
+                                      </li>     
+                                      <li>clave -  
+                                              Opcional. 
+                                              Long. mínima: <code>1</code>. 
+                                      </li>
+                                      <li>nombres -  
+                                              Opcional. 
+                                              Long. mínima: <code>1</code>. 
+                                      </li>
+                                      <li>apellidos -  
+                                              Opcional. 
+                                              Long. mínima: <code>1</code>. 
+                                      </li>
+                                      <li>númeroDeCédula -  
+                                              Opcional. 
+                                              Long. mínima: <code>1</code>. 
+                                      </li>
+                                      <li>dirección -  
+                                              Opcional. 
+                                              Long. mínima: <code>1</code>. 
+                                      </li>
+                      </ul>
+                     </li>
+             <li>Roles: Usuario</li>
+             <li>Requisitos: Registrado y con sesión iniciada</li>
+              </ul>
+          <p><strong>Cursos posibles</strong></p>
+              <ol>
+               <li>
+                   <p>resultado:</p>
+                    <ul>
+                         <li>label:'/VPerfil',</li>
+                         <li> msg:"Usuario Registrado".</li>
+                    </ul>
+                      <p>Se continúa con el rol del usuario.</p>
+               </li>
+               <li>
+                      <p>resultado:</p>
+                      <ul>
+                          <li>label:''/identificacion/AModificarPerfil',</li>
+                          <li> msg:"Usuario no pudo modificar su perfil".</li>
+                      </ul>
+               </li>
+
+              </ol>
+             </li>
+  
+
+
+
+
   
    <!-- Caso de Uso: HACER OFERTA DE VENTA -->
            <li>
@@ -302,7 +366,55 @@
               </ol>
              </li>
   
-  
+
+   <!-- Caso de Uso: MODIFICAR OFERTA DE VENTA -->
+           <li>
+            <p></p>
+            <ul>
+             <li>URL: '/inmuebles/AModificarOfertaDeVenta'</li>
+             <li>Método: POST</li>
+              <li>Formato de entrada y salida: JSON</li>
+                  <li>Parámetros POST:
+                      <ul>       
+                            <li>correo: Requerido</li>
+                            <li>id_inmueble: Requerido</li>
+                        				<li>descripción: opcional</li>
+                        				<li>precio: opcional</li>
+                        				<li>dirección: opcional</li>
+                        				<li>áreaConstrucción: opcional</li>
+                        				<li>áreaTerreno: opcional</li>
+                        				<li>númeroHabitaciones: opcional</li>
+                        				<li>númeroBaños: opcional</li>
+                        				<li>númeroEstacionamientos: opcional</li>
+                        				<li>tipoInmueble: opcional</li>
+                        				<li>fotoPrincipal: opcional</li>
+                        				<li>fotosSecundarias: opcional</li>
+                      </ul>
+                     </li>
+             <li>Roles: Vendedor</li>
+             <li>Requisitos: Usuario registrado con sesión iniciada.</li>
+              </ul>
+          <p><strong>Cursos posibles</strong></p>
+              <ol>
+               <li>
+                   <p>resultado:</p>
+                    <ul>
+                         <li>label:'/Inmuebles/VDetalles/id_inmueble',</li>
+                         <li> msg:"Modificación de la oferta de Venta Hecha".</li>
+                    </ul>
+                      <p>Se continúa con el rol del usuario.</p>
+               </li>
+               <li>
+                      <p>resultado:</p>
+                      <ul>
+                         <li>label:'/inmuebles/AModificarOfertaDeVenta',</li>
+                         <li> msg:"No se pudo hacer la modificación de la oferta de venta".</li>
+                      </ul>
+               </li>
+
+              </ol>
+             </li>
+
   
      <!-- Caso de Uso: 	BUSCAR CON FILTROS -->
            <li>
