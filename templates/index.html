@@ -6,10 +6,13 @@
     
     <!-- 1. Load libraries -->
   {% include 'stylesheets.html' %}
+  {% include 'scripts.html' %}
   </head>
   <!-- 3. Display the application -->
   <body>
+    {% verbatim %}
     <my-app>Loading...</my-app>
-  {% include 'scripts.html' %}
+    {% endverbatim %}
+  
   </body>
 </html>
