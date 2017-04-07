@@ -1,42 +1,44 @@
+# Inmobiliaria
 
-     ,-----.,--.                  ,--. ,---.   ,--.,------.  ,------.
-    '  .--./|  | ,---. ,--.,--. ,-|  || o   \  |  ||  .-.  \ |  .---'
-    |  |    |  || .-. ||  ||  |' .-. |`..'  |  |  ||  |  \  :|  `--, 
-    '  '--'\|  |' '-' ''  ''  '\ `-' | .'  /   |  ||  '--'  /|  `---.
-     `-----'`--' `---'  `----'  `---'  `--'    `--'`-------' `------'
-    ----------------------------------------------------------------- 
+Este proyecto usa de manera conjunta el framework de desarrollo web Django y 
+Angularjs en su versión dos.
 
+Instalación de Desarrollo
+-------------------------
 
-Welcome to your Django project on Cloud9 IDE!
+Luego de clonar el repositorio es necesario ejecutar la siguiente orden
+en el directorio raíz:
+```bash
+sudo pip install -r requirements.txt
+```
 
-Your Django project is already fully setup. Just click the "Run" button to start
-the application. On first run you will be asked to create an admin user. You can
-access your application from 'https://inmobiliaria-al3x4nd3r.c9users.io/' and the admin page from 
-'https://inmobiliaria-al3x4nd3r.c9users.io/admin'.
+Posteriormente, es necesario ejecutar lo siguiente:
+```bash
+cd static/js
+sudp npm install
+```
 
-## Starting from the Terminal
+Dependiendo de la versión de typescript instalada se encontrarán
+incovenientes distintos. Para determinar la versión de *tsc* que
+fue instalada, es necesario ejecutar `tsc -v`.
 
-In case you want to run your Django application from the terminal just run:
+Si se tiene la versión 2.2.2, se debería poder ejecutar `tsc` sin
+problemas en el directorio `static/js`.
 
-1) Run syncdb command to sync models to database and create Django's default superuser and auth system
+Si se tiene la versión 1.8.0, se debe ejecutar lo siguiente:
+```bash
+sudo npm install -g typings
+typings install --global dt~es6-shim
+```
 
-    $ python manage.py migrate
+Luego de esto es necesario abrir el archivo de configuración
+de compilación *tsconfig.json* y eliminar el elemento `"lib": [ "es2015", "dom" ],`.
 
-2) Run Django
+Finalmente, se debe ejecutar `tsc`. El output de esta orden debería ser así:
 
-    $ python manage.py runserver $IP:$PORT
-    
-## Configuration
+```bash
+app/app.module.ts(3,32): error TS2307: Cannot find module './app.component.js'.
+main.ts(2,27): error TS2307: Cannot find module './app/app.module.js'.
+```
 
-You can configure your Python version and `PYTHONPATH` used in
-Cloud9 > Preferences > Project Settings > Language Support.
-
-## Support & Documentation
-
-Django docs can be found at https://www.djangoproject.com/
-
-You may also want to follow the Django tutorial to create your first application:
-https://docs.djangoproject.com/en/1.9/intro/tutorial01/
-
-Visit http://docs.c9.io for support, or to learn more about using Cloud9 IDE.
-To watch some training videos, visit http://www.youtube.com/user/c9ide
+Luego de esto, sólo hay que recargar la página.
