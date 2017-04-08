@@ -10,9 +10,13 @@
   </head>
   <!-- 3. Display the application -->
   <body>
+
+  {% include "menuDeNavegacion.html" %}
+  <div id="cuerpo">
     {% verbatim %}
     <my-app>Loading...</my-app>
     {% endverbatim %}
-  
+  </div>
+  {% include 'footer.html' %}
   </body>
 </html>

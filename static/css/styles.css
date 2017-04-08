@@ -11,3 +11,47 @@ h2, h3 {
 body {
   margin: 2em;
 }
+
+
+#header {
+	width:100%;
+	height:10%;
+}
+
+#cuerpo {
+	width:100%;
+	height:80%;
+}
+
+#footer {
+	width:100%;
+	height:10%;
+	display: flex;
+	flex-direction: row;
+}
+
+.hijoFooter{
+	flex-grow: 1;
+}
+
+#subFooterIzquierdo{
+	width:100%;
+	height:10%;
+	display: flex;
+	flex-direction: column;
+}
+
+.subFooterIzquierdo{
+	flex-grow: 1;
+}
+
+#subFooterDerecho{
+	width:100%;
+	height:10%;
+	display: flex;
+	flex-direction: column;
+}
+
+.subFooterDerecho{
+	flex-grow: 1;
+}
