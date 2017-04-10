@@ -71,7 +71,9 @@
                <li>
                       <p>resultado:</p>
                       <ul>
-                          <li>inmuebles: lista de objetos de tipo inmueble</li>
+                          <li>inmuebles: lista paginada de objetos de tipo inmueble que
+                              todavía estén en venta. Si el usuario es administrador, 
+                              entonces puede ver todos las ofertas de inmuebles</li>
                       </ul>
                </li>
                 </ul>
@@ -224,6 +226,8 @@
                                         <li>Lista personalizable de tamaño variable de fotos</li>
                                       </ul>
                                 </li>
+                                <li>fechaDeOferta (Requerido)</li>
+                                <li>sePuedeMostrar (Requerido) Rol: Administrador</li>
                       </ul>
                 </li>
                </ul>
@@ -460,6 +464,8 @@
                                         <li>Lista personalizable de tamaño variable de fotos</li>
                                       </ul>
                                 </li>
+                                <li>fechaDeOferta (Requerido)</li>
+                                <li>sePuedeMostrar (Requerido)</li>
                       </ul>
                      </li>
              <li>Roles: Vendedor</li>
@@ -544,6 +550,8 @@
                                         <li>Lista personalizable de tamaño variable de fotos</li>
                                       </ul>
                                 </li>
+                                <li>fechaDeOferta (Requerido)</li>
+                                <li>sePuedeMostrar (Requerido)</li>
                       </ul>
                      </li>
              <li>Roles: Vendedor</li>
@@ -588,9 +596,9 @@
                         				<li>áreaConstrucciónCotaInferior: opcional</li>
                         				<li>áreaConstrucciónCotaSuperior: opcional</li>
                         				<li>áreaTerrenoCotaInferior: opcional</li>
-										<li>áreaTerrenoCotaSuperior: opcional</li>
+										            <li>áreaTerrenoCotaSuperior: opcional</li>
                         				<li>númeroHabitacionesCotaInferior: opcional</li>
-										<li>númeroHabitacionesCotaSuperior: opcional</li>
+										            <li>númeroHabitacionesCotaSuperior: opcional</li>
                         				<li>númeroBañosCotaInferior: opcional</li>
                         				<li>númeroBañosCotaSuperior: opcional</li>
                         				<li>númeroEstacionamientosCotaInferior: opcional</li>
@@ -622,7 +630,44 @@
               </ol>
              </li>
   
-  
+
+  <!-- Caso de Uso: ELIMINAR INMUEBLE -->
+           <li>
+            <p></p>
+            <ul>
+             <li>URL: '/inmuebles/AEliminarInmueble'</li>
+             <li>Método: POST</li>
+              <li>Formato de entrada y salida: JSON</li>
+                  <li>Parámetros POST:
+                      <ul>         
+                                      <li>idInmueble -  
+                                              Requerido. 
+                                              Long. mínima: <code>1</code>. 
+                                      </li>
+                      </ul>
+                     </li>
+             <li>Roles: Administrador</li>
+             <li>Requisitos: adminsitrador ha hecho login</li>
+              </ul>
+          <p><strong>Cursos posibles</strong></p>
+              <ol>
+               <li>
+                   <p>resultado:</p>
+                    <ul>
+                         <li>label:'/Inmuebles/VDetalles/id_inmueble',</li>
+                         <li> msg:"No se pudo eliminar inmueble".</li>
+                    </ul>
+               </li>
+               <li>
+                      <p>resultado:</p>
+                      <ul>
+                          <li>label:'/inmuebles/VInmuebles',</li>
+                          <li> msg:"Inmueble se pudo eliminar".</li>
+                      </ul>
+               </li>
+
+              </ol>
+             </li>
   
   
 </ol>
