@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "module": "umd",
+    "module": "system",
     "moduleResolution": "node",
     "sourceMap": true,
     "emitDecoratorMetadata": true,
@@ -10,7 +10,8 @@
     "noImplicitAny": true,
     "removeComments": true,
     "preserveConstEnums": true,
-    "allowUnreachableCode": true
+    "allowUnreachableCode": true,
+    "outFile": "dist/bundle.js"
   },
   "exclude": [
     "node_modules"
