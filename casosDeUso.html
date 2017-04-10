@@ -59,6 +59,13 @@
                <li>URL: '/inmuebles/VInmuebles'</li>
                <li>Método: GET</li>
                 <li>Formato de entrada y salida: JSON</li>
+                  <li>Parámetros GET:
+                      <ul>       
+                                      <li>número_de_página </li> 
+                                      <li> Requerido. </li>
+                                      <li>Long. mínima: <code>1</code>. </li>
+                      </ul>
+                     </li>
                <li>Roles: Sin restricción de rol</li>
                <li>Requisitos: No disponible</li>
                <li>
@@ -110,8 +117,15 @@
                <li>URL: '/VPerfil'</li>
                <li>Método: GET</li>
                 <li>Formato de entrada y salida: JSON</li>
+                  <li>Parámetros GET:
+                      <ul>       
+                                      <li>id_usuario </li> 
+                                      <li> Requerido. </li>
+                                      <li>Long. mínima: <code>1</code>. </li>
+                      </ul>
+                     </li>
                <li>Roles: Sin restricción de rol</li>
-               <li>Requisitos: No disponible</li>
+               <li>Requisitos: el usuario fue el creador de ese perfil</li>
                 <li> Objeto de usuario con los siguientes campos:
                       <ul>       
                            <li>correo</li>     
@@ -162,18 +176,54 @@
                <li>Requisitos: No disponible</li>
                  <li>Resultados:
                       <ul>       
-                            <li>id_inmueble </li> 
-                        				<li>descripción</li>
-                        				<li>precio</li>
-                        				<li>dirección</li>
-                        				<li>áreaConstrucción</li>
-                        				<li>áreaTerreno</li>
-                        				<li>númeroHabitaciones</li>
-                        				<li>númeroBaños</li>
-                        				<li>númeroEstacionamientos</li>
-                        				<li>tipoInmueble</li>
-                        				<li>fotoPrincipal</li>
-                        				<li>fotosSecundarias</li>
+                                <li>id_inmueble (Requerido)</li>
+                                <li>precio (Requerido)</li>
+                        				<li><spam>descripción (Requerido)</spam>
+                                      <ul>
+                                        <li>tipoDeInmueble</li>
+                                        <li>tipoDeOperación</li>
+                                        <li>antiguedadDelInmueble</li>
+                                        <li>númeroDeHabitaciones</li>
+                                        <li>númeroDeBaños</li>
+                                        <li>nombreDelInmueble</li>
+                                        <li>NúmeroDeEstacionamientos</li>
+                                        <li>metrosDeConstrucción</li>
+                                        <li>metrosDeTerreno</li>
+                                        <li>dirección</li>
+                                      </ul>
+                                </li>
+                        				<li><spam>característicasAdicionales (Opcional)</spam>
+                                      <ul>
+                                        <li>Lista personalizable de tamaño variable de características</li>
+                                      </ul>
+                                </li>
+                                <li><spam>instalacionesComodidades (Opcional)</spam>
+                                      <ul>
+                                        <li>Lista personalizable de tamaño variable de instalaciones</li>
+                                      </ul>
+                                </li>
+                                <li><spam>cercanías (Opcional)</spam>
+                                      <ul>
+                                        <li>Lista personalizable de tamaño variable de cercanías</li>
+                                      </ul>
+                                </li>
+                                <li><spam>detalles (Opcional)</spam>
+                                      <ul>
+                                        <li>Lista personalizable de tamaño variable de detalles</li>
+                                      </ul>
+                                </li>
+                                <li><spam>horarioNegociación (Requerido)</spam>
+                                      <ul>
+                                        <li>horaContactoInicio</li>
+                                        <li>horaContactoFin</li>
+                                      </ul>
+                                </li>
+                        				<li>fotoPrincipalURL (Requerido)</li>
+                                <li><spam>fotosSecundarias (Requerido)</spam>
+                                      <ul>
+                                        <li>Lista personalizable de tamaño variable de fotos</li>
+                                      </ul>
+                                </li>
                       </ul>
                 </li>
                </ul>
@@ -362,18 +412,54 @@
               <li>Formato de entrada y salida: JSON</li>
                   <li>Parámetros POST:
                       <ul>       
-                                      <li>correo: Requerido</li>
-                        				<li>descripción: Requerido</li>
-                        				<li>precio: Requerido</li>
-                        				<li>dirección: Requerido</li>
-                        				<li>áreaConstrucción: Requerido</li>
-                        				<li>áreaTerreno: Requerido</li>
-                        				<li>númeroHabitaciones: Requerido</li>
-                        				<li>númeroBaños: Requerido</li>
-                        				<li>númeroEstacionamientos: Requerido</li>
-                        				<li>tipoInmueble: Requerido</li>
-                        				<li>fotoPrincipal: Requerido</li>
-                        				<li>fotosSecundarias: Opcional</li>
+                                <li>id_inmueble (Requerido)</li>
+                                <li>precio (Requerido)</li>
+                                <li><spam>descripción (Requerido)</spam>
+                                      <ul>
+                                        <li>tipoDeInmueble</li>
+                                        <li>tipoDeOperación</li>
+                                        <li>antiguedadDelInmueble</li>
+                                        <li>númeroDeHabitaciones</li>
+                                        <li>númeroDeBaños</li>
+                                        <li>nombreDelInmueble</li>
+                                        <li>NúmeroDeEstacionamientos</li>
+                                        <li>metrosDeConstrucción</li>
+                                        <li>metrosDeTerreno</li>
+                                        <li>dirección</li>
+                                      </ul>
+                                </li>
+                                <li><spam>característicasAdicionales (Opcional)</spam>
+                                      <ul>
+                                        <li>Lista personalizable de tamaño variable de características</li>
+                                      </ul>
+                                </li>
+                                <li><spam>instalacionesComodidades (Opcional)</spam>
+                                      <ul>
+                                        <li>Lista personalizable de tamaño variable de instalaciones</li>
+                                      </ul>
+                                </li>
+                                <li><spam>cercanías (Opcional)</spam>
+                                      <ul>
+                                        <li>Lista personalizable de tamaño variable de cercanías</li>
+                                      </ul>
+                                </li>
+                                <li><spam>detalles (Opcional)</spam>
+                                      <ul>
+                                        <li>Lista personalizable de tamaño variable de detalles</li>
+                                      </ul>
+                                </li>
+                                <li><spam>horarioNegociación (Requerido)</spam>
+                                      <ul>
+                                        <li>horaContactoInicio</li>
+                                        <li>horaContactoFin</li>
+                                      </ul>
+                                </li>
+                                <li>fotoPrincipalURL (Requerido)</li>
+                                <li><spam>fotosSecundarias (Requerido)</spam>
+                                      <ul>
+                                        <li>Lista personalizable de tamaño variable de fotos</li>
+                                      </ul>
+                                </li>
                       </ul>
                      </li>
              <li>Roles: Vendedor</li>
@@ -410,19 +496,54 @@
               <li>Formato de entrada y salida: JSON</li>
                   <li>Parámetros POST:
                       <ul>       
-                            <li>correo: Requerido</li>
-                            <li>id_inmueble: Requerido</li>
-                        				<li>descripción: opcional</li>
-                        				<li>precio: opcional</li>
-                        				<li>dirección: opcional</li>
-                        				<li>áreaConstrucción: opcional</li>
-                        				<li>áreaTerreno: opcional</li>
-                        				<li>númeroHabitaciones: opcional</li>
-                        				<li>númeroBaños: opcional</li>
-                        				<li>númeroEstacionamientos: opcional</li>
-                        				<li>tipoInmueble: opcional</li>
-                        				<li>fotoPrincipal: opcional</li>
-                        				<li>fotosSecundarias: opcional</li>
+                                <li>id_inmueble (Opcional)</li>
+                                <li>precio (Opcional)</li>
+                                <li><spam>descripción (Opcional)</spam>
+                                      <ul>
+                                        <li>tipoDeInmueble</li>
+                                        <li>tipoDeOperación</li>
+                                        <li>antiguedadDelInmueble</li>
+                                        <li>númeroDeHabitaciones</li>
+                                        <li>númeroDeBaños</li>
+                                        <li>nombreDelInmueble</li>
+                                        <li>NúmeroDeEstacionamientos</li>
+                                        <li>metrosDeConstrucción</li>
+                                        <li>metrosDeTerreno</li>
+                                        <li>dirección</li>
+                                      </ul>
+                                </li>
+                                <li><spam>característicasAdicionales (Opcional)</spam>
+                                      <ul>
+                                        <li>Lista personalizable de tamaño variable de características</li>
+                                      </ul>
+                                </li>
+                                <li><spam>instalacionesComodidades (Opcional)</spam>
+                                      <ul>
+                                        <li>Lista personalizable de tamaño variable de instalaciones</li>
+                                      </ul>
+                                </li>
+                                <li><spam>cercanías (Opcional)</spam>
+                                      <ul>
+                                        <li>Lista personalizable de tamaño variable de cercanías</li>
+                                      </ul>
+                                </li>
+                                <li><spam>detalles (Opcional)</spam>
+                                      <ul>
+                                        <li>Lista personalizable de tamaño variable de detalles</li>
+                                      </ul>
+                                </li>
+                                <li><spam>horarioNegociación (Opcional)</spam>
+                                      <ul>
+                                        <li>horaContactoInicio</li>
+                                        <li>horaContactoFin</li>
+                                      </ul>
+                                </li>
+                                <li>fotoPrincipalURL (Opcional)</li>
+                                <li><spam>fotosSecundarias (Opcional)</spam>
+                                      <ul>
+                                        <li>Lista personalizable de tamaño variable de fotos</li>
+                                      </ul>
+                                </li>
                       </ul>
                      </li>
              <li>Roles: Vendedor</li>
