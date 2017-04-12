@@ -27,7 +27,11 @@ export class Inmueble {
             </div>
             <div class="container">
               <h4><b> BS. {{ inmuebleActual.precio }} </b></h4> 
-              <p>{{ inmuebleActual.descripcion }}</p> 
+              <span><p>{{ inmuebleActual.descripcion }}</p> </span>
+              <span><p>{{ inmuebleActual.numeroBanyos }} baños</p> </span>
+              <span><p>{{ inmuebleActual.numeroHabitaciones }} habitaciones</p> </span>
+              <span><p>{{ inmuebleActual.tipoInmueble }}</p> </span>
+              <span><p>{{ inmuebleActual.areaConstruccion }} metros cuadrados</p> </span>
             </div>
           </div>
   	`,
