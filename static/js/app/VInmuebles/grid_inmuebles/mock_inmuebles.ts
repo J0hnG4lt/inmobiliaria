@@ -12,8 +12,8 @@ export const INMUEBLES : Inmueble[] = [
 	  numeroBanyos:2,
 	  numeroEstacionamientos:0,
 	  tipoInmueble:"casa",
-	  urlImagenPrincipal:"static/img/Two_Children_Teasing_a_Cat.png",
-	  urlImagenesSecundarias:["static/img/Two_Children_Teasing_a_Cat.png"]
+	  urlImagenPrincipal:"static/img/certConf.jpg",
+	  urlImagenesSecundarias:["static/img/certConf.jpg"]
 	},
 	{
 	  id_inmueble: 2,
@@ -26,8 +26,8 @@ export const INMUEBLES : Inmueble[] = [
 	  numeroBanyos:1,
 	  numeroEstacionamientos:1,
 	  tipoInmueble:"apartamento",
-	  urlImagenPrincipal:"static/img/Two_Children_Teasing_a_Cat.png",
-	  urlImagenesSecundarias:["static/img/Two_Children_Teasing_a_Cat.png"]
+	  urlImagenPrincipal:"static/img/certConf.jpg",
+	  urlImagenesSecundarias:["static/img/certConf.jpg"]
 	},
 	{
 	  id_inmueble: 3,
@@ -40,8 +40,8 @@ export const INMUEBLES : Inmueble[] = [
 	  numeroBanyos:2,
 	  numeroEstacionamientos:2,
 	  tipoInmueble:"comercio",
-	  urlImagenPrincipal:"static/img/Two_Children_Teasing_a_Cat.png",
-	  urlImagenesSecundarias:["static/img/Two_Children_Teasing_a_Cat.png"]
+	  urlImagenPrincipal:"static/img/certConf.jpg",
+	  urlImagenesSecundarias:["static/img/certConf.jpg"]
 	},
 	{
 	  id_inmueble: 4,
@@ -54,8 +54,8 @@ export const INMUEBLES : Inmueble[] = [
 	  numeroBanyos:0,
 	  numeroEstacionamientos:0,
 	  tipoInmueble:"informal",
-	  urlImagenPrincipal:"static/img/Two_Children_Teasing_a_Cat.png",
-	  urlImagenesSecundarias:["static/img/Two_Children_Teasing_a_Cat.png"]
+	  urlImagenPrincipal:"static/img/certConf.jpg",
+	  urlImagenesSecundarias:["static/img/certConf.jpg"]
 	},
 	{
 	  id_inmueble: 5,
@@ -68,8 +68,8 @@ export const INMUEBLES : Inmueble[] = [
 	  numeroBanyos:10,
 	  numeroEstacionamientos:1,
 	  tipoInmueble:"mansión",
-	  urlImagenPrincipal:"static/img/Two_Children_Teasing_a_Cat.png",
-	  urlImagenesSecundarias:["static/img/Two_Children_Teasing_a_Cat.png"]
+	  urlImagenPrincipal:"static/img/certConf.jpg",
+	  urlImagenesSecundarias:["static/img/certConf.jpg"]
 	},
 	{
 	  id_inmueble: 6,
@@ -82,8 +82,8 @@ export const INMUEBLES : Inmueble[] = [
 	  numeroBanyos:0,
 	  numeroEstacionamientos:0,
 	  tipoInmueble:"terreno",
-	  urlImagenPrincipal:"static/img/Two_Children_Teasing_a_Cat.png",
-	  urlImagenesSecundarias:["static/img/Two_Children_Teasing_a_Cat.png"]
+	  urlImagenPrincipal:"static/img/certConf.jpg",
+	  urlImagenesSecundarias:["static/img/certConf.jpg"]
 	},
 	{
 	  id_inmueble: 7,
@@ -96,7 +96,7 @@ export const INMUEBLES : Inmueble[] = [
 	  numeroBanyos:0,
 	  numeroEstacionamientos:0,
 	  tipoInmueble:"terreno",
-	  urlImagenPrincipal:"static/img/Two_Children_Teasing_a_Cat.png",
-	  urlImagenesSecundarias:["static/img/Two_Children_Teasing_a_Cat.png"]
+	  urlImagenPrincipal:"static/img/certConf.jpg",
+	  urlImagenesSecundarias:["static/img/certConf.jpg"]
 	},
 ];
