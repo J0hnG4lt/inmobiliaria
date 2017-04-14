@@ -17,6 +17,9 @@ from django.core.validators import RegexValidator
 # TODO: agregar los mensajes de error de los fields (Field.error_messages)
 
 
+# TODO: discutir sobre el ISO-3166 # https://en.wikipedia.org/wiki/ISO_3166-1_numeric
+# https://coderwall.com/p/2z_e5g/import-iso-3166-1-countries-names-and-codes-in-a-django-model
+
 """
 
 TESTS para el shell de django
@@ -29,27 +32,7 @@ edi = OfertaDeInmueble(precio="200000000", divisa="BS", descripcion="Mi Apartame
 
 """
 
-class OfertaDeInmueble(models.Model) :
-
-	# Atributos Obligatorios del Modelo
-
-	precio = models.DecimalField(   max_digits=20, 
-									decimal_places=2,
-									null=False,
-									blank=False,
-									verbose_name= u"Precio del inmueble",
-									help_text= u"Usar el formato <em>321.32</em>")
-
-	divisa = models.CharField(       max_length=20,
-									 blank=False,
-									 null=False,
-									 verbose_name= u"Moneda en la que se oferta el inmueble",
-									 help_text= u"Usar el nombre de la divisa")	
-
-	descripcion = models.TextField( null=False,
-									blank=False,
-									verbose_name= u"Breve descripción")
-
+"""
 	tipoDeInmueble = models.CharField( max_length=2,
 									   choices=( ("CA","Casa"),
 									   			 ("AP","Apartamento"),
@@ -64,13 +47,132 @@ class OfertaDeInmueble(models.Model) :
 									   blank=False,
 									   verbose_name= u"Tipo de Inmueble",
 									   help_text= u"Usar una de las opciones")
+"""
 
+class TipoDeInmueble(models.Model) :
+
+	nombreTipoDeInmueble = models.CharField(max_length=20,
+										   null=False,
+										   blank=False,
+										   verbose_name=u"Nombre del tipo de inmueble",
+										   help_text=u"Coloque el nombre de un tipo de inmueble")
+
+
+
+"""
 	tipoDeOperacion = models.CharField( max_length=2,
 									   choices=( ("VE","Venta"),
 									   			 ("AL","Alquiler") ),
 									   default="VE",
 									   verbose_name= u"Tipo de Operación",
 									   help_text= u"Usar una de las opciones")
+"""
+
+class TipoDeOperacion(models.Model) :
+
+	nombreDelTipoDeOperacion = models.CharField(max_length=20,
+										   null=False,
+										   blank=False,
+										   verbose_name=u"Nombre del tipo de operación",
+										   help_text=u"Coloque el nombre de un tipo de operación")
+
+
+class Divisa(models.Model) :
+
+	nombreMoneda = models.CharField(max_length=20,
+							   null=False,
+							   blank=False,
+							   verbose_name=u"Nombre de la moneda",
+							   help_text=u"Coloque el nombre de una divisa")
+
+	simbolo = models.CharField(max_length=20,
+							   null=True,
+							   blank=True,
+							   verbose_name=u"Símbolo de la moneda",
+							   help_text=u"Coloque el símbolo de una divisa. Si es vacío se usa el nombre.")
+
+
+
+class Pais(models.Model) :
+
+	nombrePais = models.CharField(max_length=20,
+							   null=False,
+							   blank=False,
+							   verbose_name=u"Nombre del país",
+							   help_text=u"Coloque el nombre de un país")
+
+	divisa = models.ForeignKey(Divisa,
+								null=True,
+								blank=True)
+
+
+
+
+class Estado(models.Model) :
+
+	nombreEstado = models.CharField(max_length=20,
+							   null=False,
+							   blank=False,
+							   verbose_name=u"Nombre del estado",
+							   help_text=u"Coloque el nombre de un estado")
+
+	pais = models.ForeignKey(Pais)
+
+
+
+class PrimeraDivisionAdministrativa(models.Model) :
+
+	nombreDivision = models.CharField(max_length=20,
+							   null=False,
+							   blank=False,
+							   verbose_name=u"Nombre de la división administrativa (Ej: Municipio) siguiente a Estado o Provincia",
+							   help_text=u"Coloque el nombre de una división administrativa siguiente a Estado o Provincia")
+
+	estado = models.ForeignKey(Estado)
+
+class Foto(models.Model) :
+	titulo = models.CharField(       max_length=20,
+									 blank=False,
+									 null=False,
+									 verbose_name= u"Título de la foto",
+									 help_text= u"Colocar el título de una foto")
+
+	fotoPrincipalURL = models.TextField(      verbose_name= u"Foto principal del inmueble",
+											  null=False,
+											  blank=False,
+											  help_text= u'Dirección de la foto en el servidor')
+
+
+
+class OfertaDeInmueble(models.Model) :
+
+	# Atributos Obligatorios del Modelo
+
+	precio = models.DecimalField(   max_digits=20, 
+									decimal_places=2,
+									null=False,
+									blank=False,
+									verbose_name= u"Precio del inmueble",
+									help_text= u"Usar el formato <em>321.32</em>")
+
+	divisa = models.ForeignKey(		 Divisa,
+									 blank=False,
+							 		 null=False,
+									 verbose_name= u"Moneda en la que se oferta el inmueble",
+									 help_text= u"Usar el nombre de la divisa")	
+
+	descripcion = models.TextField( null=False,
+									blank=False,
+									verbose_name= u"Breve descripción")
+
+
+	tipoDeInmueble = models.ForeignKey(TipoDeInmueble,
+							 blank=False,
+							 null=False)
+
+	tipoDeOperacion = models.ForeignKey(TipoDeOperacion,
+							 blank=False,
+							 null=False)
 
 	antiguedadDeInmueble = models.PositiveSmallIntegerField( max_length=3,
 												null=False,
@@ -116,8 +218,20 @@ class OfertaDeInmueble(models.Model) :
 
 	direccion = models.TextField(         null=False,
 										  blank=False,
-										  verbose_name= u"Dirección completa del inmueble",
+										  verbose_name= u"Dirección completa del inmueble con país, estado, municipio, parroquia y avenida.",
 										  help_text= u"Colocar la dirección del inmueble")
+
+	pais = models.ForeignKey(Pais,
+							 blank=False,
+							 null=False)
+
+	estado = models.ForeignKey(Estado,
+							 blank=False,
+							 null=False)
+
+	municipio = models.ForeignKey(PrimeraDivisionAdministrativa,
+							 blank=False,
+							 null=False)
 
 	# No usar el otro field para URLs
 	fotoPrincipalURL = models.TextField(  verbose_name= u"Foto principal del inmueble",
@@ -221,5 +335,9 @@ class Usuario(models.Model) :
 	correo = models.EmailField(	 max_length=254,
 								 verbose_name= u"Correo electrónico del usuario",
 								 unique=True)
+
+	foto = models.ForeignKey(Foto,
+								null=True,
+								blank=True)
 
 
