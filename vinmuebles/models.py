@@ -9,11 +9,13 @@ from django.core.validators import RegexValidator
 # TODO: actualizar las nacionalidades del class usuario
 # TODO: discutir si se puede usar esto https://github.com/SmileyChris/django-countries/
 # TODO: actualizar el tipo de divisa en class ofertadeinmueble
+	# DONE: agregada tabla divisa
 # TODO: discutir si es buena idea colocar el tipo de divisa
 # TODO: determinar como usar el FileField con las fotos o el FilePathField o el ImageField
 # TODO: usar los validadores
 # TODO: especificar los unique fields
 # TODO: discutir si se agregan fields de parroquia y municipio
+	# DONE: agregada tabla de primera division administrativa AKA: municipio
 # TODO: agregar los mensajes de error de los fields (Field.error_messages)
 
 
@@ -32,22 +34,7 @@ edi = OfertaDeInmueble(precio="200000000", divisa="BS", descripcion="Mi Apartame
 
 """
 
-"""
-	tipoDeInmueble = models.CharField( max_length=2,
-									   choices=( ("CA","Casa"),
-									   			 ("AP","Apartamento"),
-									   			 ("QU","Quinta"),
-									   			 ("TE","Terreno"),
-									   			 ("LO","Local"),
-									   			 ("CO","Comercio"),
-									   			 ("OF","Oficina"),
-									   			 ("IN","Informal") ),
-									   default="CA",
-									   null=False,
-									   blank=False,
-									   verbose_name= u"Tipo de Inmueble",
-									   help_text= u"Usar una de las opciones")
-"""
+
 
 class TipoDeInmueble(models.Model) :
 
@@ -57,16 +44,6 @@ class TipoDeInmueble(models.Model) :
 										   verbose_name=u"Nombre del tipo de inmueble",
 										   help_text=u"Coloque el nombre de un tipo de inmueble")
 
-
-
-"""
-	tipoDeOperacion = models.CharField( max_length=2,
-									   choices=( ("VE","Venta"),
-									   			 ("AL","Alquiler") ),
-									   default="VE",
-									   verbose_name= u"Tipo de Operación",
-									   help_text= u"Usar una de las opciones")
-"""
 
 class TipoDeOperacion(models.Model) :
 
@@ -95,7 +72,7 @@ class Divisa(models.Model) :
 
 class Pais(models.Model) :
 
-	nombrePais = models.CharField(max_length=20,
+	nombrePais = models.CharField(max_length=40,
 							   null=False,
 							   blank=False,
 							   verbose_name=u"Nombre del país",
@@ -104,6 +81,12 @@ class Pais(models.Model) :
 	divisa = models.ForeignKey(Divisa,
 								null=True,
 								blank=True)
+
+	nacionalidad = models.CharField(max_length=20,
+							   null=False,
+							   blank=False,
+							   verbose_name=u"Nombre de la nacionalidad",
+							   help_text=u"Coloque una nacionalidad")
 
 
 
@@ -316,11 +299,15 @@ class Usuario(models.Model) :
 									null=False,
 									verbose_name= u"Cédula o identificación del usuario",
 									unique=True)
-
+	"""
 	nacionalidad = models.CharField( max_length=20,
 									 blank=False,
 									 null=False,
 									 verbose_name= u"Nacionalidad del usuario" )
+	"""
+	nacionalidad = models.ForeignKey(Pais,
+									 blank=False,
+									 null=False)
 
 	direccion = models.TextField(     null=False,
 								      blank=False,
