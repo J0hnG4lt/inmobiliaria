@@ -15,6 +15,7 @@ export class Inmueble {
   tipoInmueble:string;
   urlImagenPrincipal : string;
   urlImagenesSecundarias : string[];
+
 }
 
 

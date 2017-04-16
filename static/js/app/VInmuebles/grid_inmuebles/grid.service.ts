@@ -2,11 +2,34 @@ import { Injectable } from '@angular/core';
 import { Inmueble } from './inmueble_resumen/inmueble.component.js';
 import { INMUEBLES } from './mock_inmuebles.js';
 
+import { Http, Response } from '@angular/http';
+import 'rxjs/Rx';
+import {Observable} from 'rxjs/Rx'
+
 @Injectable()
 export class InmuebleService {
 
+	server_url = "http://127.0.0.1:8000/vinmuebles/0";
+	serviceData : any;
+	constructor(public http: Http) { }
+
 	getInmuebles() : Promise<Inmueble[]> {
   		return Promise.resolve(INMUEBLES);
+	}
+
+	private extractData(res : any) {
+
+		if (res.status < 200 || res.status >= 300) {
+		  throw new Error('Bad response status: ' + res.status);
+		}
+
+		// console.log(res.json());
+		this.serviceData = (res.json());
+		return this.serviceData || {};
+	}
+
+	loaddata(): Observable<any> {
+		return this.http.get(this.server_url).map(this.extractData);
 	}
 	
 }
