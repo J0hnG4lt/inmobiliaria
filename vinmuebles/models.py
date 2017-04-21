@@ -126,6 +126,52 @@ class Foto(models.Model) :
 											  help_text= u'Dirección de la foto en el servidor')
 
 
+class Usuario(models.Model) :
+
+	nombres = models.CharField( 	max_length=40,
+									blank=False,
+									null=False,
+									verbose_name= u"Nombres del usuario")
+
+	apellidos = models.CharField( 	max_length=40,
+									blank=False,
+									null=False,
+									verbose_name= u"Apellidos del usuario")
+
+	cedula = models.IntegerField(   
+									blank=False,
+									null=False,
+									verbose_name= u"Cédula o identificación del usuario",
+									unique=True)
+	"""
+	nacionalidad = models.CharField( max_length=20,
+									 blank=False,
+									 null=False,
+									 verbose_name= u"Nacionalidad del usuario" )
+	"""
+	nacionalidad = models.ForeignKey(Pais,
+									 blank=False,
+									 null=False)
+
+	direccion = models.TextField(     null=False,
+								      blank=False,
+									  verbose_name= u"Dirección completa del usuario",
+									  unique=False,
+									  help_text= u"Colocar la dirección completa del usuario.")
+	
+	telefono = models.CharField(blank=False, 
+								unique=True,
+								max_length=15)
+
+	correo = models.EmailField(	 max_length=254,
+								 verbose_name= u"Correo electrónico del usuario",
+								 unique=True)
+
+	foto = models.ForeignKey(Foto,
+								null=True,
+								blank=True)
+
+
 
 class OfertaDeInmueble(models.Model) :
 
@@ -144,6 +190,24 @@ class OfertaDeInmueble(models.Model) :
 									 verbose_name= u"Moneda en la que se oferta el inmueble",
 									 help_text= u"Usar el nombre de la divisa")	
 
+	duenyo = models.ForeignKey(		 Usuario,
+									 blank=False,
+							 		 null=False,
+									 verbose_name= u"Dueño del inmueble",
+									 related_name="inmueblesPropiosVendidosOenVenta")
+
+	vendedor = models.ForeignKey(	 Usuario,
+									 blank=True,
+							 		 null=True,
+									 verbose_name= u"Vendedor del inmueble",
+									 related_name="inmueblesVendidosOenVenta")
+
+	comprador = models.ForeignKey(	 Usuario,
+									 blank=True,
+							 		 null=True,
+									 verbose_name= u"Nuevo dueño del inmueble",
+									 related_name="inmueblesComprados")
+
 	descripcion = models.TextField( null=False,
 									blank=False,
 									verbose_name= u"Breve descripción")
@@ -157,19 +221,19 @@ class OfertaDeInmueble(models.Model) :
 							 blank=False,
 							 null=False)
 
-	antiguedadDeInmueble = models.PositiveSmallIntegerField( max_length=3,
+	antiguedadDeInmueble = models.PositiveSmallIntegerField(
 												null=False,
 												blank=False,
 												verbose_name= u"Cantidad de años desde su construcción",
 												help_text= u"Usar un entero positivo")
 
-	numeroDeHabitaciones = models.PositiveSmallIntegerField( max_length=3,
+	numeroDeHabitaciones = models.PositiveSmallIntegerField(
 												null=False,
 												blank=False,
 												verbose_name= u"Cantidad de habitaciones",
 												help_text= u"Usar un entero positivo")
 
-	numeroDeBanyos = models.PositiveSmallIntegerField( max_length=3,
+	numeroDeBanyos = models.PositiveSmallIntegerField(
 												null=False,
 												blank=False,
 												verbose_name= u"Cantidad de baños",
@@ -181,19 +245,19 @@ class OfertaDeInmueble(models.Model) :
 										  verbose_name= u"Nombre del inmueble",
 										  help_text= u"Colocar el nombre del inmueble")
 
-	numeroDeEstacionamientos = models.PositiveSmallIntegerField( max_length=3,
+	numeroDeEstacionamientos = models.PositiveSmallIntegerField( 
 													null=False,
 													blank=False,
 													verbose_name= u"Número de estacionamientos",
 													help_text= u"Usar un entero positivo")
 
-	metrosDeConstruccion = models.PositiveIntegerField( max_length=10,
+	metrosDeConstruccion = models.PositiveIntegerField(
 													null=False,
 													blank=False,
 													verbose_name= u"Metros cuadrados de construcción",
 													help_text= u"Usar un entero positivo")
 
-	metrosDeTerreno = models.PositiveIntegerField(  max_length=10,
+	metrosDeTerreno = models.PositiveIntegerField(  
 													null=False,
 													blank=False,
 													verbose_name= u"Metros cuadrados de terreno",
@@ -280,51 +344,3 @@ class Detalles(models.Model) :
 
 	inmueble = models.ForeignKey(         OfertaDeInmueble,
 										  on_delete=models.CASCADE)
-
-
-class Usuario(models.Model) :
-
-	nombres = models.CharField( 	max_length=40,
-									blank=False,
-									null=False,
-									verbose_name= u"Nombres del usuario")
-
-	apellidos = models.CharField( 	max_length=40,
-									blank=False,
-									null=False,
-									verbose_name= u"Apellidos del usuario")
-
-	cedula = models.IntegerField(   max_length=20,
-									blank=False,
-									null=False,
-									verbose_name= u"Cédula o identificación del usuario",
-									unique=True)
-	"""
-	nacionalidad = models.CharField( max_length=20,
-									 blank=False,
-									 null=False,
-									 verbose_name= u"Nacionalidad del usuario" )
-	"""
-	nacionalidad = models.ForeignKey(Pais,
-									 blank=False,
-									 null=False)
-
-	direccion = models.TextField(     null=False,
-								      blank=False,
-									  verbose_name= u"Dirección completa del usuario",
-									  unique=True,
-									  help_text= u"Colocar la dirección completa del usuario.")
-	
-	telefono = models.CharField(blank=False, 
-								unique=True,
-								max_length=15)
-
-	correo = models.EmailField(	 max_length=254,
-								 verbose_name= u"Correo electrónico del usuario",
-								 unique=True)
-
-	foto = models.ForeignKey(Foto,
-								null=True,
-								blank=True)
-
-
