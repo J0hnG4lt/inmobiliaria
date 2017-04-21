@@ -30,6 +30,7 @@ function construirInmuebles(datos:any){
 		inmueble.areaConstruccion = objeto.fields.metrosDeConstruccion;
 		inmueble.areaTerreno = objeto.fields.metrosDeTerreno;
 		inmueble.numeroBanyos = objeto.fields.numeroDeBanyos;
+		inmueble.numeroHabitaciones = objeto.fields.numeroDeHabitaciones;
 		inmueble.numeroEstacionamientos = objeto.fields.numeroDeEstacionamientos;
 		inmueble.tipoInmueble = objeto.fields.tipoDeInmueble;
 		inmueble.urlImagenPrincipal = objeto.fields.fotoPrincipalURL;
