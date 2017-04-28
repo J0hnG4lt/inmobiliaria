@@ -40,14 +40,14 @@ body {
 
 @media only screen and (max-width: 750px) {
 	.inmueble {
-		float:left;
 		padding: 0px;
 		
-
+		
 		margin-top: 10px;
-		margin-left: 0px;
-
-
+		margin-left: auto;
+		margin-right: auto;
+		width: 300px;
+		height: 400px;
 		color: red;
 		font-weight: bold;
 
@@ -75,31 +75,21 @@ body {
 	.hijoFooter{
 		width:100%;
 		display: block;
+		position: inline;
 	}
 
-	#subFooterIzquierdo{
-
-
-	}
+	
 
 	.subFooterIzquierdo{
 		width: 100%;
 	}
 
-	#subFooterDerecho{
 
-
-	}
-
-	.subFooterDerecho{
-		width: 100%;
-
-	}
 
 	#footer p {
 	  text-align:center; 
 	  vertical-align: middle;
-	  display: table-cell;   
+	  
 	}
 
 
