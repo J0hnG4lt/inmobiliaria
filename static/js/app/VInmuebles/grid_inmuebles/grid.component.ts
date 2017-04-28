@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener, Input } from '@angular/core';
 import { InmuebleService } from './grid.service.js';
 import { Inmueble } from './inmueble_resumen/inmueble.component.js';
 
@@ -22,7 +22,8 @@ import { Inmueble } from './inmueble_resumen/inmueble.component.js';
 function construirInmuebles(datos:any){
 	let inmuebles : Inmueble[] = [];
 	let i = 0;
-	for(var objeto of datos){
+	let listaDeInmuebles : any[] = datos.slice(0, -1);
+	for(var objeto of listaDeInmuebles){
 		let inmueble = new Inmueble();
 		inmueble.descripcion = objeto.fields.descripcion;
 		inmueble.precio = objeto.fields.precio;
@@ -44,10 +45,11 @@ function construirInmuebles(datos:any){
 @Component({
   selector: 'my-inmuebles',
   template: `
-  	<div id="grid_de_inmuebles">  
+  	<div class="grid_de_inmuebles">  
   			<div class="inmueble" *ngFor="let inmuebl of inmuebles">
   				<my-inmueble [inmuebleActual]="inmuebl" ></my-inmueble>
   			</div>
+  			<my-inmuebles *ngIf="aunFaltan && enElFondo" [numeroDePagina]="numeroDePagina"></my-inmuebles>
   	</div>
   	`,
   providers: [InmuebleService]
@@ -55,23 +57,40 @@ function construirInmuebles(datos:any){
 export class GridComponent implements OnInit { 
 	
 	inmuebles : any[];
-
+	enElFondo : boolean = false;
+	aunFaltan : boolean = true;
+	@Input() numeroDePagina : number;
+	
 	constructor(private inmuebleService : InmuebleService){
 
 
 	}
 
-	getInmuebles():void{
-		this.inmuebleService.getInmuebles().then(Inmuebles => this.inmuebles = Inmuebles);
-		alert("HOLA");
-	}
-
 
 	ngOnInit(): void {
-	    this.inmuebleService.loaddata().subscribe(data => {
+		if (this.aunFaltan){
+	    	this.inmuebleService.loaddata(this.numeroDePagina).subscribe(data => {
       		// do something with the data
-      		this.inmuebles = construirInmuebles(data);
-    	})
+
+	      		this.inmuebles = construirInmuebles(data);
+		      	if (data.aunFaltanPaginas ){
+		      			this.aunFaltan = false;
+		      	}
+		      	this.numeroDePagina += 1;
+		    }
+
+    	)
+	    }
+	    }
+	
+
+	@HostListener('window:scroll',[])
+	onScroll(evento : any): void {
+	if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+			this.enElFondo = true;        
+	    }
+	    
 	}
+
 
 }

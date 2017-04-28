@@ -9,7 +9,7 @@ import {Observable} from 'rxjs/Rx'
 @Injectable()
 export class InmuebleService {
 
-	server_url = "http://127.0.0.1:8000/vinmuebles/0";
+	server_url = "http://127.0.0.1:8000/vinmuebles/";
 	serviceData : any;
 	constructor(public http: Http) { }
 
@@ -28,8 +28,8 @@ export class InmuebleService {
 		return this.serviceData || {};
 	}
 
-	loaddata(): Observable<any> {
-		return this.http.get(this.server_url).map(this.extractData);
+	loaddata(pagina=0): Observable<any> {
+		return this.http.get(this.server_url+pagina.toString(10)).map(this.extractData);
 	}
 	
 }

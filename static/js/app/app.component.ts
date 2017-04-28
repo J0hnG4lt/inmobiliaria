@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'my-app',
-  template: '<my-inmuebles class="selector"></my-inmuebles>',
+  template: '<my-inmuebles [numeroDePagina]="0" class="selector"></my-inmuebles>',
   styles:[`
 
   my-inmuebles {
