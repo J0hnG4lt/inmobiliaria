@@ -23,7 +23,7 @@ def vInmuebles(request, pagina=None) :
 	else :
 		pagina = 0
 
-	numeroDeInmueblesPorPagina=10
+	numeroDeInmueblesPorPagina=9
 	cotaInferior = pagina*numeroDeInmueblesPorPagina
 	cotaSuperior = (pagina+1)*numeroDeInmueblesPorPagina
 
