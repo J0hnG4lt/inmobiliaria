@@ -73,7 +73,8 @@ export class GridComponent implements OnInit {
       		// do something with the data
 
 	      		this.inmuebles = construirInmuebles(data);
-		      	if (data.aunFaltanPaginas ){
+
+		      	if (data[data.length-1].aunFaltanPaginas == false){
 		      			this.aunFaltan = false;
 		      	}
 		      	this.numeroDePagina += 1;
@@ -87,7 +88,8 @@ export class GridComponent implements OnInit {
 	@HostListener('window:scroll',[])
 	onScroll(evento : any): void {
 	if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-			this.enElFondo = true;        
+			this.enElFondo = true; 
+
 	    }
 	    
 	}
