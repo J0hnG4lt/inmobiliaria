@@ -31,8 +31,7 @@ def vInmuebles(request, pagina=None) :
 
 	todasLasOfertas = OfertaDeInmueble.objects.all()
 	numeroTotalDeOfertas = len(todasLasOfertas)
-	print numeroTotalDeOfertas
-	print("cotaInferior: ",cotaInferior)
+
 	# Si solicita pagina que no existe devuelve lista vacia
 	if cotaInferior > numeroTotalDeOfertas :
 		return HttpResponse(json.dumps([{u'aunFaltanPaginas':False}]),
@@ -46,7 +45,6 @@ def vInmuebles(request, pagina=None) :
 		if cotaInferior < 0 :
 			cotaInferior = 0
 
-	print("cotaSuperior: ",cotaSuperior)
 	ofertas = todasLasOfertas[cotaInferior:cotaSuperior]
 
 	# Obtiene el json a partir del modelo de la base de datos

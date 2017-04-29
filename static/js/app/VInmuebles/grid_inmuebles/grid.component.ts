@@ -49,7 +49,7 @@ function construirInmuebles(datos:any){
   			<div class="inmueble" *ngFor="let inmuebl of inmuebles">
   				<my-inmueble [inmuebleActual]="inmuebl" ></my-inmueble>
   			</div>
-  			<my-inmuebles *ngIf="aunFaltan && enElFondo" [numeroDePagina]="numeroDePagina"></my-inmuebles>
+  			<my-inmuebles *ngIf="aunFaltan && enElFondo && sePuedeCargarLaSiguiente" [numeroDePagina]="numeroDePaginaSiguiente"></my-inmuebles>
   	</div>
   	`,
   providers: [InmuebleService]
@@ -60,7 +60,9 @@ export class GridComponent implements OnInit {
 	enElFondo : boolean = false;
 	aunFaltan : boolean = true;
 	@Input() numeroDePagina : number;
-	
+	numeroDePaginaSiguiente : number;
+	sePuedeCargarLaSiguiente : boolean = false;
+
 	constructor(private inmuebleService : InmuebleService){
 
 
@@ -77,7 +79,9 @@ export class GridComponent implements OnInit {
 		      	if (data[data.length-1].aunFaltanPaginas == false){
 		      			this.aunFaltan = false;
 		      	}
-		      	this.numeroDePagina += 1;
+					this.numeroDePaginaSiguiente = this.numeroDePagina;
+					this.numeroDePaginaSiguiente += 1;
+					this.sePuedeCargarLaSiguiente = true;
 		    }
 
     	)
@@ -88,7 +92,7 @@ export class GridComponent implements OnInit {
 	@HostListener('window:scroll',[])
 	onScroll(evento : any): void {
 	if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-			this.enElFondo = true; 
+			this.enElFondo = true;
 
 	    }
 	    
