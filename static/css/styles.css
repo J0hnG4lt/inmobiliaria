@@ -72,9 +72,11 @@ body {
 		margin-top: 10px;
 		margin-left: auto;
 		margin-right: auto;
+		
+		margin-bottom: 30px;
 		width: 300px;
 		height: 400px;
-		color: #C3DB89;
+		color: white;
 		font-weight: bold;
 
 		text-align: center;
@@ -82,11 +84,16 @@ body {
 
 	#left {
 	    position: inline;
+	    padding: 10px;
 
 	}
 
 	#cuerpo {
-		padding: 0px;
+		padding-top: 30px;
+		padding-bottom: 30px;
+		margin-top: 10px;
+		margin-bottom: 10px;
+		background-color: hsla(57, 100%, 57%, 1);
 	}
 
 
@@ -104,7 +111,6 @@ body {
 		position: inline;
 	}
 
-	
 
 	.subFooterIzquierdo{
 		width: 100%;
@@ -117,7 +123,11 @@ body {
 	  vertical-align: middle;
 	  
 	}
-
+	.card{
+		background-color: hsla(228, 80%, 10%, 1);
+		padding: 5px;
+		
+	}
 
 }
 
@@ -141,16 +151,23 @@ body {
 		text-align: center;
 	}
 	.card{
-		background-color: hsla(57, 100%, 45%, 1);
+		background-color: hsla(228, 43%, 13%, 0.8);
+		color: LightBlue;
 		padding: 5px;
 		
 	}
+
+	.grid_de_inmuebles{
+		
+	}
+
 	.card:hover{
-		background-color: hsla(57, 100%, 50%, 1);
+		background-color: hsla(228, 43%, 13%, 0.1);
+		color: DarkSlateGray;
 		
 	}
 	.container{
-		opacity: 0.1;
+		opacity: 0.5;
 	}
 	.container:hover{
 		opacity: 1;
