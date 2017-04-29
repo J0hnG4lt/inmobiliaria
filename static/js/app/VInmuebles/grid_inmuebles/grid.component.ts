@@ -91,7 +91,12 @@ export class GridComponent implements OnInit {
 
 	@HostListener('window:scroll',[])
 	onScroll(evento : any): void {
-	if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+	let docHeight : number = Math.max(
+        document.body.scrollHeight, document.documentElement.scrollHeight,
+        document.body.offsetHeight, document.documentElement.offsetHeight,
+        document.body.clientHeight, document.documentElement.clientHeight
+    );
+	if ((window.innerHeight + window.scrollY) >= docHeight) {
 			this.enElFondo = true;
 
 	    }
