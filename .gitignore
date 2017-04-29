@@ -3,4 +3,6 @@ static/js/**/*.js
 static/js/**/*.js.map
 static/js/node_modules/
 static/js/typings/
+db.sqlite3
+vinmuebles/migrations
 *.pyc
