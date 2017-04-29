@@ -96,7 +96,7 @@ export class GridComponent implements OnInit {
         document.body.offsetHeight, document.documentElement.offsetHeight,
         document.body.clientHeight, document.documentElement.clientHeight
     );
-	if ((window.innerHeight + window.scrollY) >= docHeight) {
+	if ((window.innerHeight + window.scrollY+15) >= docHeight) {
 			this.enElFondo = true;
 
 	    }
