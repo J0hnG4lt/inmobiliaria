@@ -14,7 +14,15 @@ def index(request):
         }
     return HttpResponse(template.render(context, request))
 
+def grid_inmuebles(request):
+    template = loader.get_template('grid-inmuebles.html')
+    context = Context({})
+    return HttpResponse(template.render(context))
 
+def resumen_inmueble(request):
+    template = loader.get_template('resumen-inmueble.html')
+    context = Context({})
+    return HttpResponse(template.render(context))
 
 def vInmuebles(request, pagina=None) :
 	

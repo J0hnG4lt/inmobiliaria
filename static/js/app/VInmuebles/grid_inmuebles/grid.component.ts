@@ -44,14 +44,7 @@ function construirInmuebles(datos:any){
 
 @Component({
   selector: 'my-inmuebles',
-  template: `
-  	<div class="grid_de_inmuebles">  
-  			<div class="inmueble" *ngFor="let inmuebl of inmuebles">
-  				<my-inmueble [inmuebleActual]="inmuebl" ></my-inmueble>
-  			</div>
-  			<my-inmuebles *ngIf="aunFaltan && enElFondo && sePuedeCargarLaSiguiente" [numeroDePagina]="numeroDePaginaSiguiente"></my-inmuebles>
-  	</div>
-  	`,
+  templateUrl:'grid_inmuebles',
   providers: [InmuebleService]
 })
 export class GridComponent implements OnInit { 
@@ -73,7 +66,6 @@ export class GridComponent implements OnInit {
 		if (this.aunFaltan){
 	    	this.inmuebleService.loaddata(this.numeroDePagina).subscribe(data => {
       		// do something with the data
-
 	      		this.inmuebles = construirInmuebles(data);
 
 		      	if (data[data.length-1].aunFaltanPaginas == false){

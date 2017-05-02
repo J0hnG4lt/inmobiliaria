@@ -21,23 +21,9 @@ export class Inmueble {
 
 @Component({
   selector: 'my-inmueble',
-  template: `
-           <div class="card">
-           <div class="imagen">
-            <img src="{{ inmuebleActual.urlImagenPrincipal }}" alt="Avatar" style="width:100%">
-            </div>
-            <div class="container">
-              <h4><b> BS. {{ inmuebleActual.precio }} </b></h4> 
-              <span><p>{{ inmuebleActual.descripcion }}</p> </span>
-              <span><p>{{ inmuebleActual.numeroBanyos }} baños</p> </span>
-              <span><p>{{ inmuebleActual.numeroHabitaciones }} habitaciones</p> </span>
-              <span><p>{{ inmuebleActual.tipoInmueble }}</p> </span>
-              <span><p>{{ inmuebleActual.areaConstruccion }} metros cuadrados</p> </span>
-            </div>
-          </div>
-  	`,
+  templateUrl:'resumen_inmueble',
   styles:[`
-      .card {
+      /*.card {
 
           /* Add shadows to create the "card" effect */
           box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -73,7 +59,7 @@ export class Inmueble {
           left: 0;
           width: 100%;
           height: 100%;
-      }
+      }*/
 
   `]
 })

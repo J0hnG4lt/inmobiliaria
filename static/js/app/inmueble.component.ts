@@ -18,13 +18,7 @@ export class Inmueble {
 
 @Component({
   selector: 'my-inmuebles',
-  template: `
-  	<div id="grid_de_inmuebles">  
-  			<div class="inmueble" *ngFor="let inmuebl of inmuebles">
-  				{{inmuebl.descripcion}}
-  			</div>
-  	</div>
-  	`,
+  templateUrl:'templates/inmuebles.html',
   providers: [InmuebleService]
 })
 export class InmuebleComponent implements OnInit { 

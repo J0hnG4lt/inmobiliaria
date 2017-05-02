@@ -1,0 +1,25 @@
+
+
+{% verbatim %}
+
+<div class="w3-card-2">
+  <div class="imagen w3-container" style="text-align:center">
+    <img src="{{ inmuebleActual.urlImagenPrincipal }}" alt="Avatar" height="150px">
+  </div>
+  <div class="w3-container">
+    <h6><b> VENTA</b></h6> 
+    <h6><b> Bs. {{ inmuebleActual.precio }} </b></h6> 
+    <div class="w3-container">
+      <span><p><i class="fa fa-fw fa-bath"></i>{{ inmuebleActual.numeroBanyos }} baños</p> </span>
+      <span><p><i class="fa fa-fw fa-bed"></i> {{ inmuebleActual.numeroHabitaciones }} hab.</p> </span>
+      <span><p><i class="material-icons" style="vertical-align: middle;">terrain</i>{{ inmuebleActual.areaConstruccion }} m<sup>2</sup></p> </span>
+      <span><p><i class="fa fa-fw fa-car"></i> 1 Est.</p> </span>
+      
+    </div>
+    <hr>
+    <span><p><b>{{ inmuebleActual.tipoInmueble }}</b></p> </span>
+    <span><p>Caracas - Palo verde</p> </span>
+  </div>
+</div>
+
+{% endverbatim %}

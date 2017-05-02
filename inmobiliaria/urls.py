@@ -24,7 +24,9 @@ from django.conf.urls.static import static
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^vinmuebles/(?P<pagina>\d+)', views.vInmuebles),
-    url(r'^$', views.index, name="index")
+    url(r'^$', views.index, name="index"),
+    url(r'^grid_inmuebles', views.grid_inmuebles, name="grid_inmuebles"),
+    url(r'^resumen_inmueble', views.resumen_inmueble, name="resumen_inmueble")   
 ]
 
 urlpatterns += staticfiles_urlpatterns()

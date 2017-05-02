@@ -14,27 +14,26 @@
   <body>
 
   {% include "menuDeNavegacion.html" %}
-<div id="arriba">
-  <div id="left">Filtros
-    <div id="opcionesFiltros">
-      <button>HOLA</button>
-   </div>
-   </div>
 
-  <div id="cuerpo">
+  <div id="arriba" class="w3-row">
+    <div class="w3-col s2">
+      {% include "filtros.html" %}
+     </div>
 
-    {% verbatim %}
+    <div id="cuerpo" class="w3-col s10"  style="text-align:center">
 
-      <my-app class="selector">Buscando inmuebles...</my-app>
+      {% verbatim %}
 
-    {% endverbatim %}
+        <my-app class="selector"><i style="margin-top:30px" class="fa fa-spinner fa-pulse fa-3x"></i></my-app>
 
-  </div>
+      {% endverbatim %}
+
+    </div>
 
   </div>
   
-<div id="spacer"></div>
-  {% include 'footer.html' %}
+  <div id="spacer"></div>
+    {% include 'footer.html' %}
 
   </body>
 </html>

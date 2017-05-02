@@ -16,8 +16,6 @@ body {
   min-height: 100%;
   min-width: 100%;
   background-color: hsla(200, 100%, 10%,0.02);
-  color: DarkBlue;
-  padding: 5px;
 }
 /*	#C3DB89
 	#FFFDFD*/
@@ -51,7 +49,6 @@ body {
 	padding-top: 30px;
 	padding-bottom: 30px;
 	color:white;
-	border-radius: 15px 15px 15px 15px;
 }
 
 #footer a:hover{
@@ -59,7 +56,6 @@ body {
 }
 
 #cuerpo {
-	width:100%;
 	position:relative;	
 }
 
@@ -79,7 +75,6 @@ body {
 		color: white;
 		font-weight: bold;
 
-		text-align: center;
 	}
 
 	#left {
@@ -148,7 +143,6 @@ body {
 		color: DarkSlateGray;
 		font-weight: bold;
 
-		text-align: center;
 	}
 	.card{
 		background-color: hsla(228, 43%, 13%, 0.8);
@@ -174,20 +168,15 @@ body {
 	}
 
 	#left {
-	    width: 18%;
 	    height: 100%;
 	    position: relative;
 	    float:left;
 	    padding:5px;
-	    margin-left: 5px;
 
 	}
 	#cuerpo{
-		margin-left: 20%;
-		width: 80%;
 		height: auto;
 		position: relative;
-
 	}
 
 
@@ -242,9 +231,6 @@ body {
 #left {
 
 	/* Add shadows to create the "card" effect */
-	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-	transition: 0.3s;
-	border-radius: 5px; /* 5px rounded corners */
 	background-color:hsla(228, 43%, 13%, 0.1);
 
 }
@@ -257,4 +243,27 @@ body {
 .card {
 	position:relative;
 	
+}
+
+a:hover,a:focus{
+	text-decoration: none !important;
+}
+
+#nav a i.material-icons{
+	vertical-align: middle;
+	margin-right: 2px;
+}
+
+#nav{
+	padding-right: 120px;
+	padding-left: 100px;
+	height: 80px;
+}
+
+#nav .sub-nav a{
+	margin-right: 20px;
+}
+
+#filtros form p {
+	margin-bottom: 0px;
 }
