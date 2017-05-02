@@ -40,7 +40,7 @@ body {
 }
 
 #footer{
-	background-color: hsla(228, 43%, 13%, 1);
+	background-color: hsla(30, 96%, 52%, 1.0);
 	width: 100%;
 	height: 100%;
 	margin:0px;
@@ -49,10 +49,12 @@ body {
 	padding-top: 30px;
 	padding-bottom: 30px;
 	color:white;
+	font-weight: bold;
+
 }
 
 #footer a:hover{
-	color:white;
+	color:yellow;
 }
 
 #arriba{
@@ -174,6 +176,7 @@ body {
 	    position: fixed;
 	    float:left;
 	    padding:5px;
+	    margin-left: 10px;
 
 	}
 
@@ -252,6 +255,13 @@ body {
 	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
+.carta{
+	transition: 0.2s ease;
+}
+.carta:hover {
+	box-shadow: 0 8px 20px 0 rgba(0,0,0,0.2);
+}
+
 .card {
 	position:relative;
 	
@@ -283,3 +293,4 @@ a:hover,a:focus{
 .icon-inmueble{
 	font-size: 16px !important;
 }
+
