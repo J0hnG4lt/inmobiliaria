@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Inmueble } from './inmueble_resumen/inmueble.component.js';
-import { INMUEBLES } from './mock_inmuebles.js';
+
 
 import { Http, Response } from '@angular/http';
 import 'rxjs/Rx';
@@ -13,9 +13,6 @@ export class InmuebleService {
 	serviceData : any;
 	constructor(public http: Http) { }
 
-	getInmuebles() : Promise<Inmueble[]> {
-  		return Promise.resolve(INMUEBLES);
-	}
 
 	private extractData(res : any) {
 

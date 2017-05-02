@@ -5,6 +5,7 @@ from django.shortcuts import render_to_response
 from django.views.generic import TemplateView
 from django.core import serializers
 from vinmuebles.models import OfertaDeInmueble, TipoDeOperacion, TipoDeInmueble
+from vinmuebles.models import Estado, PrimeraDivisionAdministrativa
 import json
 
 def index(request):
@@ -72,6 +73,14 @@ def vInmuebles(request, pagina=None) :
 		tipoDeOperacion = TipoDeOperacion.objects.filter(id=tipoDeOperacionID)[0]
 		oferta["fields"]["tipoDeOperacion"] = tipoDeOperacion.nombreDelTipoDeOperacion
 	
+		estadoID = oferta["fields"]["estado"]
+		estado = Estado.objects.filter(id=estadoID)[0]
+		oferta["fields"]["estado"] = estado.nombreEstado
+
+		municipioID = oferta["fields"]["municipio"]
+		municipio = PrimeraDivisionAdministrativa.objects.filter(id=municipioID)[0]
+		oferta["fields"]["municipio"] = municipio.nombreDivision
+
 	datos = json.dumps(datos)
 
 	return HttpResponse(datos, content_type='application/json')

@@ -36,9 +36,13 @@ function construirInmuebles(datos:any){
 		inmueble.tipoInmueble = objeto.fields.tipoDeInmueble;
 		inmueble.urlImagenPrincipal = objeto.fields.fotoPrincipalURL;
 		inmueble.urlImagenesSecundarias = [];
+		inmueble.estado = objeto.fields.estado;
+		inmueble.municipio = objeto.fields.municipio;
+		inmueble.tipoDeOperacion = objeto.fields.tipoDeOperacion;
 		inmuebles.push(inmueble);
 		i++;
 	}
+
 	return inmuebles;
 }
 

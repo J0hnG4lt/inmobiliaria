@@ -15,6 +15,9 @@ export class Inmueble {
   tipoInmueble:string;
   urlImagenPrincipal : string;
   urlImagenesSecundarias : string[];
+  estado : string;
+  municipio : string;
+  tipoDeOperacion : string;
 
 }
 

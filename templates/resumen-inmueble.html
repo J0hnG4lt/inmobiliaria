@@ -3,22 +3,37 @@
 {% verbatim %}
 
 <div class="w3-card-2">
-  <div class="imagen w3-container" style="text-align:center">
+  <div class="w3-container" style="text-align:center">
     <img src="{{ inmuebleActual.urlImagenPrincipal }}" alt="Avatar" height="150px">
   </div>
+  <hr>
   <div class="w3-container">
-    <h6><b> VENTA</b></h6> 
-    <h6><b> Bs. {{ inmuebleActual.precio }} </b></h6> 
-    <div class="w3-container">
-      <span><p><i class="fa fa-fw fa-bath"></i>{{ inmuebleActual.numeroBanyos }} baños</p> </span>
-      <span><p><i class="fa fa-fw fa-bed"></i> {{ inmuebleActual.numeroHabitaciones }} hab.</p> </span>
-      <span><p><i class="material-icons" style="vertical-align: middle;">terrain</i>{{ inmuebleActual.areaConstruccion }} m<sup>2</sup></p> </span>
-      <span><p><i class="fa fa-fw fa-car"></i> 1 Est.</p> </span>
-      
-    </div>
-    <hr>
-    <span><p><b>{{ inmuebleActual.tipoInmueble }}</b></p> </span>
-    <span><p>Caracas - Palo verde</p> </span>
+    
+
+    <table class="w3-table w3-centered">
+    <tr>
+      <th><i class="fa fa-fw fa-bath"></i>{{ inmuebleActual.numeroBanyos }} baños</th>
+      <th><i class="fa fa-fw fa-bed"></i> {{ inmuebleActual.numeroHabitaciones }} hab.</th>
+    </tr>
+    <tr>
+      <th><i class="material-icons" style="vertical-align: middle;">terrain</i>{{ inmuebleActual.areaConstruccion }} m<sup>2</sup></th>
+      <th><i class="fa fa-fw fa-car"></i> {{inmuebleActual.numeroEstacionamientos}} Est.</th>
+    </tr>
+    </table>
+
+    <table class="w3-table w3-centered">
+    <tr>
+     <th><b>{{ inmuebleActual.tipoInmueble }}</b></th>
+      <th> <p>{{ inmuebleActual.estado }} - {{ inmuebleActual.municipio }}</p> </th>
+    </tr>
+    </table>
+    <table class="w3-table w3-centered">
+    <tr>
+      <th><b class="w3-centered"> {{ inmuebleActual.tipoDeOperacion }} </b></th>
+      <th><b class="w3-centered"> Bs. {{ inmuebleActual.precio }} </b></th>
+    </tr>
+    </table>
+
   </div>
 </div>
 
