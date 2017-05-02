@@ -1,8 +1,8 @@
 
 {% verbatim %}
 
-<div class="grid_de_inmuebles w3-row">  
-		<div class="inmueble w3-col s3" style="height:auto;text-align:left" *ngFor="let inmuebl of inmuebles">
+<div class="grid_de_inmuebles">  
+		<div class="inmueble" style="height:auto;text-align:left" *ngFor="let inmuebl of inmuebles">
 			<my-inmueble [inmuebleActual]="inmuebl" ></my-inmueble>
 		</div>
 		<my-inmuebles *ngIf="aunFaltan && enElFondo && sePuedeCargarLaSiguiente" [numeroDePagina]="numeroDePaginaSiguiente"></my-inmuebles>
