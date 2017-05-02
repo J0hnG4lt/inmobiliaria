@@ -294,3 +294,9 @@ a:hover,a:focus{
 	font-size: 16px !important;
 }
 
+#spinner{
+	position: relative;
+	margin-left: 45%;
+	margin-top: 15%;
+}
+
