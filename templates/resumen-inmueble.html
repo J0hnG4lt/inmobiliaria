@@ -6,32 +6,28 @@
   <div class="w3-container" style="text-align:center">
     <img src="{{ inmuebleActual.urlImagenPrincipal }}" alt="Avatar" height="150px">
   </div>
-  <hr>
-  <div class="w3-container">
+  <div class="w3-container" style="margin-top: 7px;">
+    <table class="w3-table w3-centered">
+      <tr style="background-color:#7EFF00;">
+        <th><b class="w3-centered"> {{ inmuebleActual.tipoDeOperacion }} </b></th>
+        <th><b class="w3-centered"> Bs. {{ inmuebleActual.precio }} </b></th>
+      </tr>
+    </table>
     
-
     <table class="w3-table w3-centered">
-    <tr>
-      <th><i class="fa fa-fw fa-bath"></i>{{ inmuebleActual.numeroBanyos }} baños</th>
-      <th><i class="fa fa-fw fa-bed"></i> {{ inmuebleActual.numeroHabitaciones }} hab.</th>
-    </tr>
-    <tr>
-      <th><i class="material-icons" style="vertical-align: middle;">terrain</i>{{ inmuebleActual.areaConstruccion }} m<sup>2</sup></th>
-      <th><i class="fa fa-fw fa-car"></i> {{inmuebleActual.numeroEstacionamientos}} Est.</th>
-    </tr>
+      <tr>
+        <th><i class="fa fa-fw fa-bath icon-inmueble"></i> <br>{{ inmuebleActual.numeroBanyos }} baños</th>
+        <th><i class="fa fa-fw fa-bed icon-inmueble"></i> <br>{{ inmuebleActual.numeroHabitaciones }} hab.</th>
+        <th style="padding-top: 10px;"><i class="material-icons icon-inmueble" style="vertical-align: middle;">terrain</i><br>{{ inmuebleActual.areaConstruccion }} m<sup>2</sup></th>
+        <th><i class="fa fa-fw fa-car icon-inmueble"></i> <br>{{inmuebleActual.numeroEstacionamientos}} Est.</th>
+      </tr>
     </table>
-
+    <hr style="margin:0px !important">
     <table class="w3-table w3-centered">
-    <tr>
-     <th><b>{{ inmuebleActual.tipoInmueble }}</b></th>
-      <th> <p>{{ inmuebleActual.estado }} - {{ inmuebleActual.municipio }}</p> </th>
-    </tr>
-    </table>
-    <table class="w3-table w3-centered">
-    <tr>
-      <th><b class="w3-centered"> {{ inmuebleActual.tipoDeOperacion }} </b></th>
-      <th><b class="w3-centered"> Bs. {{ inmuebleActual.precio }} </b></th>
-    </tr>
+      <tr>
+       <th><b>{{ inmuebleActual.tipoInmueble }}</b></th>
+        <th> <p>{{ inmuebleActual.estado }} - {{ inmuebleActual.municipio }}</p> </th>
+      </tr>
     </table>
 
   </div>

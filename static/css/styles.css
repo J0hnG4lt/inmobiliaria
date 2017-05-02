@@ -271,3 +271,7 @@ a:hover,a:focus{
 #filtros form p {
 	margin-bottom: 0px;
 }
+
+.icon-inmueble{
+	font-size: 16px !important;
+}
