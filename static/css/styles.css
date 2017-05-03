@@ -61,6 +61,7 @@ body {
 	position: relative;
 	width: 100%;
 	overflow: hidden;
+	margin-top: 80px;
 }
 
 #cuerpo{
@@ -280,6 +281,10 @@ a:hover,a:focus{
 	padding-right: 120px;
 	padding-left: 100px;
 	height: 80px;
+	position: fixed;
+    z-index: 4;
+    width: 100%;
+    background-color: white;
 }
 
 #nav .sub-nav a{

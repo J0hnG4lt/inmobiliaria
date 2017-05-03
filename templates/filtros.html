@@ -3,19 +3,43 @@
 <div id="left" class="w3-container w3-padding w3-margin-top w3-card-2" style="background-color: #f1f1f1;">
 	<h6 style="text-align:center"> <b>Filtros de busqueda</b></h6>
 	<div class="w3-container">
-		<form>          
-	      <p><label><i class="fa fa-calendar-o"></i> Antiguedad Maxima</label></p>
-	      <input class="w3-input w3-border" type="text" placeholder="DD MM YYYY" name="CheckOut">         
-	      <p><label><i class="fa fa-bath"></i> Baños</label></p>
-	      <input class="w3-input w3-border" type="number" value="1" name="banyos" min="1" max="6">              
-	      <p><label><i class="fa fa-bed"></i> Habitaciones</label></p>
-	      <input class="w3-input w3-border" type="number" value="0" name="habs" min="0" max="6">
-	      <p><label><i class="fa fa-car"></i> Estacionamientos</label></p>
-	      <input class="w3-input w3-border" type="number" value="0">
-	      <p><label><i class="fa fa-usd"></i> Precio Maximo</label></p>
-	      <input class="w3-input w3-border" type="text">
-	      
-	      <p><button class="w3-button w3-block w3-green w3-left-align w3-margin-top" type="submit"><i class="fa fa-search w3-margin-right"></i> Actualizar</button></p>
+		<form>   
+			<p><label>Operación</label></p>
+			<select id="searchOperations" class="w3-select" name="operacion">
+		        <option value="">Venta</option>
+		        <option value="">Alquiler</option>
+		        <option value="">Alquiler Vacacional</option>
+			</select>   
+			<p><label>Inmueble</label></p>
+			<select id="searchCategories" class="w3-select" name="tipo_inmueble">
+				<option value="">Apartamentos</option>
+				<option value="">Casas</option>
+				<option value="">Townhouses</option>
+				<option value="">Locales</option>
+				<option value="">Terrenos</option>
+				<option value="">Oficinas</option>
+				<option value="">Galpones</option>
+				<option value="">Negocios</option>
+				<option value="">Edificios</option>
+				<option value="">Haciendas - Fincas</option>
+				<option value="">Acción de Club</option>
+				<option value="">Hoteles y Resorts</option>
+				<option value="">Parcelas de Cementerio</option>
+				<option value="">Anexos</option>
+			</select>
+			
+			<p><label><i class="fa fa-calendar-o"></i> Antiguedad Maxima</label></p>
+			<input class="w3-input w3-border" type="text" placeholder="DD MM YYYY" name="CheckOut">         
+			<p><label><i class="fa fa-bath"></i> Baños</label></p>
+			<input class="w3-input w3-border" type="number" value="1" name="banyos" min="1" max="6">              
+			<p><label><i class="fa fa-bed"></i> Habitaciones</label></p>
+			<input class="w3-input w3-border" type="number" value="0" name="habs" min="0" max="6">
+			<p><label><i class="fa fa-car"></i> Estacionamientos</label></p>
+			<input class="w3-input w3-border" type="number" value="0">
+			<p><label><i class="fa fa-usd"></i> Precio Maximo</label></p>
+			<input class="w3-input w3-border" type="text">
+
+	      <p><button class="w3-button w3-block w3-green w3-left-align w3-margin-top" type="submit"><i class="fa fa-search w3-margin-right"></i> Actualizar busqueda</button></p>
 	    </form>
 	</div>	
 </div>
