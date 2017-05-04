@@ -4,18 +4,17 @@
 	<h5 style="text-align:center;height: 35px;background-color: #7EFF00;padding-top: 9px;"> <b>Filtros de busqueda</b></h5>
 	<div class="w3-container">
 		
-		<form #f="ngForm"
-			  (ngSubmit)="onSubmit(f.value)">   
+		<form [formGroup]="myForm" novalidate (ngSubmit)="save(myForm.value, myForm.valid)">   
 			
 			<p>
 				<label for="searchOperations">	
 					Operación
 				</label>
 			</p>
-			<select id="searchOperations" class="w3-select" name="operacion">
-		        <option value="">Venta</option>
-		        <option value="">Alquiler</option>
-		        <option value="">Alquiler Vacacional</option>
+			<select id="searchOperations" class="w3-select" name="operacion" formControlName="operacion">
+		        <option value="Venta">Venta</option>
+		        <option value="Alquiler">Alquiler</option>
+		        <option value="AlquilerVacacional">Alquiler Vacacional</option>
 			</select>
 
 			<p>
@@ -23,21 +22,21 @@
 					Inmueble
 				</label>
 			</p>
-			<select id="searchCategories" class="w3-select" name="tipo_inmueble">
+			<select id="searchCategories" class="w3-select" name="tipo_inmueble" formControlName="tipoDeInmueble">
 				<option value="">Apartamentos</option>
-				<option value="">Casas</option>
-				<option value="">Townhouses</option>
-				<option value="">Locales</option>
-				<option value="">Terrenos</option>
-				<option value="">Oficinas</option>
-				<option value="">Galpones</option>
-				<option value="">Negocios</option>
-				<option value="">Edificios</option>
-				<option value="">Haciendas - Fincas</option>
-				<option value="">Acción de Club</option>
-				<option value="">Hoteles y Resorts</option>
-				<option value="">Parcelas de Cementerio</option>
-				<option value="">Anexos</option>
+				<option value="Casa">Casas</option>
+				<option value="Townhouse">Townhouses</option>
+				<option value="Local">Locales</option>
+				<option value="Terreno">Terrenos</option>
+				<option value="Oficina">Oficinas</option>
+				<option value="Galpon">Galpones</option>
+				<option value="Negocio">Negocios</option>
+				<option value="Edificio">Edificios</option>
+				<option value="Hacienda">Haciendas - Fincas</option>
+				<option value="Acción">Acción de Club</option>
+				<option value="Hotel">Hoteles y Resorts</option>
+				<option value="Parcela">Parcelas de Cementerio</option>
+				<option value="Anexo">Anexos</option>
 			</select>
 
 			<p>
@@ -45,34 +44,34 @@
 					<i class="fa fa-calendar-o"></i> Antiguedad Maxima
 				</label>
 			</p>
-			<input id="antiguedadMax" class="w3-input w3-border" type="text" placeholder="DD MM YYYY" name="CheckOut">         
+			<input id="antiguedadMax" class="w3-input w3-border" type="text" placeholder="DD MM YYYY" name="CheckOut" formControlName="antiguedadMax">         
 			<p>
 				<label for="numBanyos"><i class="fa fa-bath"></i> 
 					Baños
 				</label>
 			</p>
-			<input id="numBanyos" class="w3-input w3-border" type="number" value="1" name="banyos" min="1" max="6"> 
+			<input id="numBanyos" class="w3-input w3-border" type="number" value="1" name="banyos" min="1" max="6" formControlName="numeroBanyos"> 
 
 			<p>
 				<label for="numHabs">
 					<i class="fa fa-bed"></i> Habitaciones
 				</label>
 			</p>
-			<input id="numHabs" class="w3-input w3-border" type="number" value="0" name="habs" min="0" max="6">
+			<input id="numHabs" class="w3-input w3-border" type="number" value="0" name="habs" min="0" max="6" formControlName="numeroHabitaciones">
 
 			<p>
 				<label for="numEstac">
 					<i class="fa fa-car"></i> Estacionamientos
 				</label>
 			</p>
-			<input id="numEstac" class="w3-input w3-border" type="number" value="0">
+			<input id="numEstac" class="w3-input w3-border" type="number" value="0" name="estacs" formControlName="numeroEstacionamientos">
 
 			<p>
 				<label for="precio">
 					<i class="fa fa-usd"></i> Precio Maximo
 				</label>
 			</p>
-			<input id="precio" class="w3-input w3-border" type="text">
+			<input id="precio" class="w3-input w3-border" type="text" formControlName="precioMax">
 
 	      <p>
 	      	<button class="w3-button w3-block w3-green w3-left-align w3-margin-top" type="submit">
