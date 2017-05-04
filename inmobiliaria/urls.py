@@ -26,6 +26,7 @@ urlpatterns = [
     url(r'^vinmuebles/(?P<pagina>\d+)', views.vInmuebles),
     url(r'^$', views.index, name="index"),
     url(r'^grid_inmuebles', views.grid_inmuebles, name="grid_inmuebles"),
+    url(r'^filtros', views.filtros, name="filtros"),
     url(r'^resumen_inmueble', views.resumen_inmueble, name="resumen_inmueble")   
 ]
 

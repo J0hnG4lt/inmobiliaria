@@ -5,7 +5,7 @@
 		<div class="inmueble" style="height:auto;text-align:left" *ngFor="let inmuebl of inmuebles">
 			<my-inmueble [inmuebleActual]="inmuebl" ></my-inmueble>
 		</div>
-		<my-inmuebles *ngIf="aunFaltan && enElFondo && sePuedeCargarLaSiguiente" [numeroDePagina]="numeroDePaginaSiguiente"></my-inmuebles>
+		<grid-inmuebles *ngIf="aunFaltan && enElFondo && sePuedeCargarLaSiguiente" [numeroDePagina]="numeroDePaginaSiguiente"></grid-inmuebles>
 </div>
 
  {% endverbatim %}

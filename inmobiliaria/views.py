@@ -20,6 +20,11 @@ def grid_inmuebles(request):
     context = dict()
     return HttpResponse(template.render(context))
 
+def filtros(request):
+    template = loader.get_template('filtros.html')
+    context = dict()
+    return HttpResponse(template.render(context))
+
 def resumen_inmueble(request):
     template = loader.get_template('resumen-inmueble.html')
     context = dict()

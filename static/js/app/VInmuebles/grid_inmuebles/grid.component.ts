@@ -17,7 +17,7 @@ import { Inmueble } from './inmueble_resumen/inmueble.component.js';
   urlImagenPrincipal : string;
   urlImagenesSecundarias : string[];
 
-*/
+*/ 
 
 function construirInmuebles(datos:any){
 	let inmuebles : Inmueble[] = [];
@@ -47,7 +47,7 @@ function construirInmuebles(datos:any){
 }
 
 @Component({
-  selector: 'my-inmuebles',
+  selector: 'grid-inmuebles',
   templateUrl:'grid_inmuebles',
   providers: [InmuebleService]
 })
