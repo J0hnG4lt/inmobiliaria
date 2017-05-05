@@ -46,11 +46,19 @@ def guardarInstancias(listaDeInstancias):
 
 
 tiposDeInmuebles = [TipoDeInmueble(nombreTipoDeInmueble=u"Casa"),
+					TipoDeInmueble(nombreTipoDeInmueble=u"Townhouse"),
 					TipoDeInmueble(nombreTipoDeInmueble=u"Apartamento"), 
 					TipoDeInmueble(nombreTipoDeInmueble=u"Quinta"),
 					TipoDeInmueble(nombreTipoDeInmueble=u"Terreno"),
 					TipoDeInmueble(nombreTipoDeInmueble=u"Local"),
-					TipoDeInmueble(nombreTipoDeInmueble=u"Comercio"),
+					TipoDeInmueble(nombreTipoDeInmueble=u"Negocio"),
+					TipoDeInmueble(nombreTipoDeInmueble=u"Hacienda"),
+					TipoDeInmueble(nombreTipoDeInmueble=u"Galpón"),
+					TipoDeInmueble(nombreTipoDeInmueble=u"Edificio"),
+					TipoDeInmueble(nombreTipoDeInmueble=u"Anexo"),
+					TipoDeInmueble(nombreTipoDeInmueble=u"AcciónClub"),
+					TipoDeInmueble(nombreTipoDeInmueble=u"ParcelaCementerio"),
+					TipoDeInmueble(nombreTipoDeInmueble=u"Hotel"),
 					TipoDeInmueble(nombreTipoDeInmueble=u"Oficina"),
 					TipoDeInmueble(nombreTipoDeInmueble=u"Informal")]
 
@@ -59,7 +67,8 @@ guardarInstancias(tiposDeInmuebles)
 
 
 tipoDeOperaciones = [TipoDeOperacion(nombreDelTipoDeOperacion=u"Venta"),
-					 TipoDeOperacion(nombreDelTipoDeOperacion=u"Alquiler")]
+					 TipoDeOperacion(nombreDelTipoDeOperacion=u"Alquiler"),
+					 TipoDeOperacion(nombreDelTipoDeOperacion=u"AlquilerVacacional")]
 
 guardarInstancias(tipoDeOperaciones)
 
