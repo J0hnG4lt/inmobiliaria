@@ -1,7 +1,7 @@
 import { Component, OnInit, HostListener, Input } from '@angular/core';
 import { InmuebleService } from './grid.service.js';
 import { Inmueble } from './inmueble_resumen/inmueble.component.js';
-
+import { FiltrosService } from '../filtros_busqueda/filtros.service.js';
 
 /*
   id_inmueble: number;
@@ -60,7 +60,8 @@ export class GridComponent implements OnInit {
 	numeroDePaginaSiguiente : number;
 	sePuedeCargarLaSiguiente : boolean = false;
 
-	constructor(private inmuebleService : InmuebleService){
+	constructor(private inmuebleService : InmuebleService,
+				private filtrosService : FiltrosService){
 
 
 	}
@@ -68,7 +69,12 @@ export class GridComponent implements OnInit {
 
 	ngOnInit(): void {
 		if (this.aunFaltan){
-	    	this.inmuebleService.loaddata(this.numeroDePagina).subscribe(data => {
+
+		    console.log("Datos recibidos de formulario en grid.component.ts");
+	    	console.log(this.filtrosService.obtenerDatos());
+	    	let filtrosAplicados = this.filtrosService.obtenerDatos();
+
+	    	this.inmuebleService.loaddata(this.numeroDePagina, filtrosAplicados).subscribe(data => {
       		// do something with the data
 	      		this.inmuebles = construirInmuebles(data);
 

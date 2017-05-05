@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 
+import { FiltrosService } from './VInmuebles/filtros_busqueda/filtros.service.js';
+import { GridComponent } from './VInmuebles/grid_inmuebles/grid.component.js';
+import { FiltrosComponent } from './VInmuebles/filtros_busqueda/filtros.component.js';
 
 @Component({
   selector: 'my-app',
@@ -24,7 +27,8 @@ import { Component } from '@angular/core';
   	height: 100%;
   }
 
-  `]
+  `],
+  providers: [ FiltrosService ]
 })
 export class AppComponent { 
   

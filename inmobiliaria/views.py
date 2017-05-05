@@ -7,6 +7,9 @@ from django.core import serializers
 from vinmuebles.models import OfertaDeInmueble, TipoDeOperacion, TipoDeInmueble
 from vinmuebles.models import Estado, PrimeraDivisionAdministrativa
 import json
+import sys
+from django.views.decorators.csrf import csrf_exempt
+
 
 def index(request):
     template = loader.get_template('index.html')
@@ -30,6 +33,7 @@ def resumen_inmueble(request):
     context = dict()
     return HttpResponse(template.render(context))
 
+@csrf_exempt
 def vInmuebles(request, pagina=None) :
 	
 	# Saneamos el input
@@ -43,7 +47,22 @@ def vInmuebles(request, pagina=None) :
 	cotaInferior = pagina*numeroDeInmueblesPorPagina
 	cotaSuperior = (pagina+1)*numeroDeInmueblesPorPagina
 
-	todasLasOfertas = OfertaDeInmueble.objects.all()
+	if request.method == 'POST':
+
+		filtros = json.loads(request.body)
+
+		precioMax = filtros.get("precioMax",sys.maxsize)
+		if precioMax == "":
+			precioMax = sys.maxsize
+
+		# TODO: actualizar los datos de relleno usando la info de los filtros
+		# TODO: poner los filtros que faltan
+
+		todasLasOfertas = OfertaDeInmueble.objects.filter(precio__lt=precioMax)
+
+	elif request.method == 'GET':
+		todasLasOfertas = OfertaDeInmueble.objects.all()
+
 	numeroTotalDeOfertas = len(todasLasOfertas)
 
 	# Si solicita pagina que no existe devuelve lista vacia

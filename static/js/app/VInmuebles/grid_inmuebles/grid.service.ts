@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Inmueble } from './inmueble_resumen/inmueble.component.js';
+import { Filtros } from '../filtros_busqueda/filtros.component.js';
 
-
-import { Http, Response } from '@angular/http';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/Rx';
 import {Observable} from 'rxjs/Rx'
+
+
 
 @Injectable()
 export class InmuebleService {
@@ -25,8 +27,18 @@ export class InmuebleService {
 		return this.serviceData || {};
 	}
 
-	loaddata(pagina=0): Observable<any> {
-		return this.http.get(this.server_url+pagina.toString(10)).map(this.extractData);
+	loaddata(pagina=0,filtros?: Filtros): Observable<any> {
+		
+		if (filtros){
+		    let headers = new Headers({ 'Content-Type': 'application/json' });
+		    let options = new RequestOptions({ headers: headers });
+		    let body = JSON.stringify(filtros);
+			return this.http.post(this.server_url+pagina.toString(10),body,headers).map(this.extractData);
+		}
+		else{
+			return this.http.get(this.server_url+pagina.toString(10)).map(this.extractData);
+		}
+		
 	}
 	
 }
