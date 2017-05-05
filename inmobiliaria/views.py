@@ -47,20 +47,54 @@ def vInmuebles(request, pagina=None) :
 	cotaInferior = pagina*numeroDeInmueblesPorPagina
 	cotaSuperior = (pagina+1)*numeroDeInmueblesPorPagina
 
+	# Si es un post request, entonces se usan filtros de busqueda
 	if request.method == 'POST':
 
 		filtros = json.loads(request.body)
 
-		precioMax = filtros.get("precioMax",sys.maxsize)
-		if precioMax == "":
-			precioMax = sys.maxsize
+		# Se extraen los datos
+		antiguedadMax = filtros.get("antiguedadMax", "")
+		numeroBanyos = filtros.get("numeroBanyos", "")
+		numeroEstacionamientos = filtros.get("numeroEstacionamientos", "")
+		numeroHabitaciones = filtros.get("numeroHabitaciones", "")
+		operacion = filtros.get("operacion","")
+		precioMax = filtros.get("precioMax","")
+		tipoDeInmueble = filtros.get("tipoDeInmueble","")
 
-		# TODO: actualizar los datos de relleno usando la info de los filtros
-		# TODO: poner los filtros que faltan
+		# Se construye el diccionario de parametros del filter
+		filtrosParams = dict()
 
-		todasLasOfertas = OfertaDeInmueble.objects.filter(precio__lt=precioMax)
+		if antiguedadMax:
+			filtrosParams["antiguedadDeInmueble__lt"] = antiguedadMax
+
+		if numeroBanyos:
+			filtrosParams["numeroDeBanyos"] = numeroBanyos
+
+		if numeroEstacionamientos:
+			filtrosParams["numeroDeEstacionamientos"] = numeroEstacionamientos
+
+		if numeroHabitaciones:
+			filtrosParams["numeroDeHabitaciones"] = numeroHabitaciones
+
+		if operacion:
+			tipoDeOperacionID = TipoDeOperacion.objects.filter(nombreDelTipoDeOperacion=operacion)[0]
+			filtrosParams["tipoDeOperacion"] = tipoDeOperacionID
+
+		if precioMax:
+			filtrosParams["precio__lt"] = precioMax
+
+		if tipoDeInmueble:
+			tipoDeInmuebleID = TipoDeInmueble.objects.filter(nombreTipoDeInmueble=tipoDeInmueble)[0]
+			filtrosParams["tipoDeInmueble"] = tipoDeInmuebleID
+
+		# Puede ser un post request con filtros vacios
+		if filtrosParams:
+			todasLasOfertas = OfertaDeInmueble.objects.filter(**filtrosParams)
+		else:
+			todasLasOfertas = OfertaDeInmueble.objects.all()
 
 	elif request.method == 'GET':
+		# No hay filtros
 		todasLasOfertas = OfertaDeInmueble.objects.all()
 
 	numeroTotalDeOfertas = len(todasLasOfertas)
