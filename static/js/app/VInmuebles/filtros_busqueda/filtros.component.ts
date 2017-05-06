@@ -45,8 +45,6 @@ export class FiltrosComponent implements OnInit {
 
         // check if model is valid
         // if valid, call API to save customer
-        console.log("Datos generados de formulario en filtros.component.ts");
-        console.log(model, isValid);
         this.filtrosService.compartirDatos(model);
     }
 }

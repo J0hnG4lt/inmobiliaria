@@ -1,7 +1,8 @@
-import { Component, OnInit, HostListener, Input } from '@angular/core';
+import { Component, OnInit, HostListener, Input} from '@angular/core';
 import { InmuebleService } from './grid.service.js';
 import { Inmueble } from './inmueble_resumen/inmueble.component.js';
 import { FiltrosService } from '../filtros_busqueda/filtros.service.js';
+import { Filtros } from '../filtros_busqueda/filtros.component.js';
 
 /*
   id_inmueble: number;
@@ -46,6 +47,19 @@ function construirInmuebles(datos:any){
 	return inmuebles;
 }
 
+/*
+    operacion: string; // required with minimum 5 chracters
+    tipoDeInmueble: string;
+    antiguedadMax: string;
+    numeroBanyos: number;
+    numeroHabitaciones: number;
+    numeroEstacionamientos: number;
+    precioMax: number;
+*/
+
+// TODO: agregar datos que faltan en la clase del componente inmueble
+
+
 @Component({
   selector: 'grid-inmuebles',
   templateUrl:'grid_inmuebles',
@@ -57,9 +71,10 @@ export class GridComponent implements OnInit {
 	enElFondo : boolean = false;
 	aunFaltan : boolean = true;
 	@Input() numeroDePagina : number;
+	@Input() filtrosAplicados : Filtros;
 	numeroDePaginaSiguiente : number;
 	sePuedeCargarLaSiguiente : boolean = false;
-
+	
 	constructor(private inmuebleService : InmuebleService,
 				private filtrosService : FiltrosService){
 
@@ -70,11 +85,9 @@ export class GridComponent implements OnInit {
 	ngOnInit(): void {
 		if (this.aunFaltan){
 
-		    console.log("Datos recibidos de formulario en grid.component.ts");
-	    	console.log(this.filtrosService.obtenerDatos());
-	    	let filtrosAplicados = this.filtrosService.obtenerDatos();
+	    	//let filtrosAplicados = this.filtrosService.obtenerDatos();
 
-	    	this.inmuebleService.loaddata(this.numeroDePagina, filtrosAplicados).subscribe(data => {
+	    	this.inmuebleService.loaddata(this.numeroDePagina, this.filtrosAplicados).subscribe(data => {
       		// do something with the data
 	      		this.inmuebles = construirInmuebles(data);
 
@@ -88,6 +101,7 @@ export class GridComponent implements OnInit {
 
     	)
 	    }
+
 	    }
 	
 
