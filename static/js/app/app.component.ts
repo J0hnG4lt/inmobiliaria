@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, HostListener } from '@angular/core';
 
 import { FiltrosService } from './VInmuebles/filtros_busqueda/filtros.service.js';
 import { GridComponent } from './VInmuebles/grid_inmuebles/grid.component.js';
@@ -37,6 +37,13 @@ function compararFiltros(filtro1: Filtros, filtro2: Filtros): boolean{
   return true;
 }
 
+/*
+Cada vez que se actualizan los filtros, hay que vover a generar los componentes de
+las páginas de inmuebles desde cero, pues hay data que depende del server 
+que no se puede actualizar usando los métodos usuales de angular 2. Por
+esta razón nos valemos del switch statement y el ngFor abajo.
+*/
+
 @Component({
   selector: 'my-app',
   template: `
@@ -72,6 +79,8 @@ export class AppComponent implements OnInit {
 
   filtrosAplicados : Filtros;
   numeroDeFiltro : number = 1;
+
+  // Para usar en el ngFor arriba
   numeroDeFiltros : Array<number> = [];
   constructor(@Inject(FiltrosService) private filtrosService: FiltrosService){
     for (let i=0; i<100;i++){
@@ -83,8 +92,14 @@ export class AppComponent implements OnInit {
    this.filtrosAplicados = this.filtrosService.obtenerDatos();
  } 
 
- ngDoCheck(): void{
+ 
+ // Escucha a un custom event registrado en filtros.service.ts
+ @HostListener('window:filtroSubmitted', ['$event'])
+ checkear(): void{
+
    let nuevosFiltros = this.filtrosService.obtenerDatos();
+
+   // Si no es primera vez que se cambia
    if (nuevosFiltros && this.filtrosAplicados){
 
        if( ! compararFiltros(this.filtrosAplicados, nuevosFiltros) ){
@@ -93,6 +108,7 @@ export class AppComponent implements OnInit {
        }
 
    }
+   // Si es primera vez que se cambia el filtro
    else if (nuevosFiltros){
        this.filtrosAplicados = nuevosFiltros;
        this.numeroDeFiltro += 1;

@@ -2,8 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { FiltrosService } from './filtros.service.js';
 
+// TODO: agregar validadores de form necesarios abajo
+
 export class Filtros {
-    operacion: string; // required with minimum 5 chracters
+
+	// Filtros usados
+    operacion: string; 
     tipoDeInmueble: string;
     antiguedadMax: string;
     numeroBanyos: number;
@@ -19,15 +23,13 @@ export class Filtros {
 })
 export class FiltrosComponent implements OnInit {
     public myForm: FormGroup; // our model driven form
-    public submitted: boolean; // keep track on whether form is submitted
-    public events: any[] = []; // use later to display form changes
 
     constructor(private _fb: FormBuilder,
     			private filtrosService : FiltrosService) { } // form builder simplify form initialization
 
     ngOnInit() {
-        // we will initialize our form model here
-
+        
+        // Se crean los inputs del filtro y se conectan con sus inputs en el template por su nombre
 	    this.myForm = new FormGroup({
 	        operacion: new FormControl('', []),
 	        tipoDeInmueble: new FormControl('', []),
@@ -41,10 +43,7 @@ export class FiltrosComponent implements OnInit {
     }
 
     save(model: Filtros, isValid: boolean) {
-        this.submitted = true; // set form submit to true
-
-        // check if model is valid
-        // if valid, call API to save customer
+        // TODO: determinar si el form es valido antes de compartir
         this.filtrosService.compartirDatos(model);
     }
 }

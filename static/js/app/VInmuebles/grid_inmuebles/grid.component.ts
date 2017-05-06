@@ -1,25 +1,12 @@
 import { Component, OnInit, HostListener, Input} from '@angular/core';
 import { InmuebleService } from './grid.service.js';
 import { Inmueble } from './inmueble_resumen/inmueble.component.js';
-import { FiltrosService } from '../filtros_busqueda/filtros.service.js';
 import { Filtros } from '../filtros_busqueda/filtros.component.js';
 
 /*
-  id_inmueble: number;
-  descripcion: string;
-  precio:number;
-  direccion:string;
-  areaConstruccion:number;
-  areaTerreno:number;
-  numeroHabitaciones:number;
-  numeroBanyos:number;
-  numeroEstacionamientos:number;
-  tipoInmueble:string;
-  urlImagenPrincipal : string;
-  urlImagenesSecundarias : string[];
-
-*/ 
-
+Esta funcion convierte a un objecto inmueble los datos llegados
+desde el back-end
+*/
 function construirInmuebles(datos:any){
 	let inmuebles : Inmueble[] = [];
 	let i = 0;
@@ -47,18 +34,12 @@ function construirInmuebles(datos:any){
 	return inmuebles;
 }
 
-/*
-    operacion: string; // required with minimum 5 chracters
-    tipoDeInmueble: string;
-    antiguedadMax: string;
-    numeroBanyos: number;
-    numeroHabitaciones: number;
-    numeroEstacionamientos: number;
-    precioMax: number;
-*/
 
 // TODO: agregar datos que faltan en la clase del componente inmueble
 
+/*
+Este template corresponde a una pagina
+*/
 
 @Component({
   selector: 'grid-inmuebles',
@@ -74,23 +55,22 @@ export class GridComponent implements OnInit {
 	@Input() filtrosAplicados : Filtros;
 	numeroDePaginaSiguiente : number;
 	sePuedeCargarLaSiguiente : boolean = false;
-	
-	constructor(private inmuebleService : InmuebleService,
-				private filtrosService : FiltrosService){
+
+	constructor(private inmuebleService : InmuebleService){
 
 
 	}
 
-
 	ngOnInit(): void {
 		if (this.aunFaltan){
-
-	    	//let filtrosAplicados = this.filtrosService.obtenerDatos();
-
+			// Cargar los inmuebles de esta pagina usando filtros
 	    	this.inmuebleService.loaddata(this.numeroDePagina, this.filtrosAplicados).subscribe(data => {
-      		// do something with the data
+      			// Construyo los inmuebles con la data y arreglo el numero de pagina
 	      		this.inmuebles = construirInmuebles(data);
 
+	      		// Determina si hacen falta mas paginas
+	      		// Esto se hace para terminar la recursion
+	      		//  en el template.
 		      	if (data[data.length-1].aunFaltanPaginas == false){
 		      			this.aunFaltan = false;
 		      	}
@@ -104,7 +84,7 @@ export class GridComponent implements OnInit {
 
 	    }
 	
-
+	// Cuando llego al fondo de la pagina debo cargar mas inmuebles
 	@HostListener('window:scroll',[])
 	onScroll(evento : any): void {
 	let docHeight : number = Math.max(
