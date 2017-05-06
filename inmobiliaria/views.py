@@ -77,15 +77,19 @@ def vInmuebles(request, pagina=None) :
 			filtrosParams["numeroDeHabitaciones"] = numeroHabitaciones
 
 		if operacion:
-			tipoDeOperacionID = TipoDeOperacion.objects.filter(nombreDelTipoDeOperacion=operacion)[0]
-			filtrosParams["tipoDeOperacion"] = tipoDeOperacionID
+			tipoDeOperacionID = TipoDeOperacion.objects.filter(nombreDelTipoDeOperacion=operacion)
+			# Por si no existe en el modelo
+			if tipoDeOperacionID :
+				filtrosParams["tipoDeOperacion"] = tipoDeOperacionID[0]
 
 		if precioMax:
 			filtrosParams["precio__lt"] = precioMax
 
 		if tipoDeInmueble:
-			tipoDeInmuebleID = TipoDeInmueble.objects.filter(nombreTipoDeInmueble=tipoDeInmueble)[0]
-			filtrosParams["tipoDeInmueble"] = tipoDeInmuebleID
+			tipoDeInmuebleID = TipoDeInmueble.objects.filter(nombreTipoDeInmueble=tipoDeInmueble)
+			# Por si no existe en el modelo
+			if tipoDeInmuebleID :
+				filtrosParams["tipoDeInmueble"] = tipoDeInmuebleID[0]
 
 		# Puede ser un post request con filtros vacios
 		if filtrosParams:
