@@ -5,7 +5,7 @@ from django.shortcuts import render_to_response
 from django.views.generic import TemplateView
 from django.core import serializers
 from vinmuebles.models import OfertaDeInmueble, TipoDeOperacion, TipoDeInmueble
-from vinmuebles.models import Estado, PrimeraDivisionAdministrativa
+from vinmuebles.models import Estado, PrimeraDivisionAdministrativa, Pais
 import json
 import sys
 from django.views.decorators.csrf import csrf_exempt
@@ -53,12 +53,20 @@ def vInmuebles(request, pagina=None) :
 		filtros = json.loads(request.body)
 
 		# Se extraen los datos
+		# Estos nombres de los get dependen de los nombres usados en 
+		#   filtros.component.ts
 		antiguedadMax = filtros.get("antiguedadMax", "")
+		metrosCuadradosMin = filtros.get("metrosCuadradosMin", "")
+		metrosCuadradosMax = filtros.get("metrosCuadradosMax", "")
 		numeroBanyos = filtros.get("numeroBanyos", "")
 		numeroEstacionamientos = filtros.get("numeroEstacionamientos", "")
 		numeroHabitaciones = filtros.get("numeroHabitaciones", "")
 		operacion = filtros.get("operacion","")
 		precioMax = filtros.get("precioMax","")
+		precioMin = filtros.get("precioMin","")
+		pais = filtros.get("pais","")
+		estado = filtros.get("estado","")
+		municipio = filtros.get("municipio","")
 		tipoDeInmueble = filtros.get("tipoDeInmueble","")
 
 		# Se construye el diccionario de parametros del filter
@@ -66,6 +74,12 @@ def vInmuebles(request, pagina=None) :
 
 		if antiguedadMax:
 			filtrosParams["antiguedadDeInmueble__lt"] = antiguedadMax
+
+		if metrosCuadradosMin:
+			filtrosParams["metrosDeConstruccion__gt"] = metrosCuadradosMin
+
+		if metrosCuadradosMax:
+			filtrosParams["metrosDeConstruccion__lt"] = metrosCuadradosMax
 
 		if numeroBanyos:
 			filtrosParams["numeroDeBanyos"] = numeroBanyos
@@ -84,6 +98,27 @@ def vInmuebles(request, pagina=None) :
 
 		if precioMax:
 			filtrosParams["precio__lt"] = precioMax
+
+		if precioMin:
+			filtrosParams["precio__gt"] = precioMin
+
+		if pais:
+			paisID = Pais.objects.filter(nombrePais=pais)
+			# Por si no existe en el modelo
+			if paisID :
+				filtrosParams["pais"] = paisID[0]
+
+		if estado:
+			estadoID = Estado.objects.filter(nombreEstado=estado)
+			# Por si no existe en el modelo
+			if estadoID :
+				filtrosParams["estado"] = estadoID[0]
+
+		if municipio:
+			municipioID = PrimeraDivisionAdministrativa.objects.filter(nombreDivision=municipio)
+			# Por si no existe en el modelo
+			if municipioID :
+				filtrosParams["municipio"] = municipioID[0]
 
 		if tipoDeInmueble:
 			tipoDeInmuebleID = TipoDeInmueble.objects.filter(nombreTipoDeInmueble=tipoDeInmueble)

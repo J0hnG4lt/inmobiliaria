@@ -46,20 +46,35 @@
 					<i class="fa fa-calendar-o"></i> Años de Antiguedad
 				</label>
 			</p>
-			<input id="antiguedadMax" class="w3-input w3-border" type="text" placeholder="YYYY" name="CheckOut" formControlName="antiguedadMax">         
+			<input id="antiguedadMax" class="w3-input w3-border" type="text" placeholder="YYYY" name="CheckOut" formControlName="antiguedadMax">
+
+			<p>
+				<label for="metrosCuadradosMin"><i class="fa fa-square"></i> 
+					Mínimo de Metros Cuadrados
+				</label>
+			</p>
+			<input id="area" class="w3-input w3-border" type="number" value="1" name="metrosCuadradosMin" min="0" formControlName="metrosCuadradosMin"> 
+
+			<p>
+				<label for="metrosCuadradosMax"><i class="fa fa-square"></i> 
+					Máximo de Metros Cuadrados
+				</label>
+			</p>
+			<input id="area" class="w3-input w3-border" type="number" value="1" name="metrosCuadradosMin" min="1"  formControlName="metrosCuadradosMax"> 
+
 			<p>
 				<label for="numBanyos"><i class="fa fa-bath"></i> 
 					Baños
 				</label>
 			</p>
-			<input id="numBanyos" class="w3-input w3-border" type="number" value="1" name="banyos" min="1" max="6" formControlName="numeroBanyos"> 
+			<input id="numBanyos" class="w3-input w3-border" type="number" value="1" name="banyos" formControlName="numeroBanyos"> 
 
 			<p>
 				<label for="numHabs">
 					<i class="fa fa-bed"></i> Habitaciones
 				</label>
 			</p>
-			<input id="numHabs" class="w3-input w3-border" type="number" value="0" name="habs" min="0" max="6" formControlName="numeroHabitaciones">
+			<input id="numHabs" class="w3-input w3-border" type="number" value="0" name="habs" formControlName="numeroHabitaciones">
 
 			<p>
 				<label for="numEstac">
@@ -83,18 +98,30 @@
 			<input id="precioMin" class="w3-input w3-border" type="text" formControlName="precioMin">
 
 			<p>
+				<label for="pais">
+					<i class="fa fa-map-marker"></i> País
+				</label>
+			</p>
+			<select id="searchPais" class="w3-select" name="tipo_inmueble" formControlName="pais">
+				<option value="Venezuela">Venezuela</option>
+				<option value="United States">Estados Unidos</option>
+			</select>
+
+
+			<p>
+				<label for="estado">
+					<i class="fa fa-map-pin"></i> Estado
+				</label>
+			</p>
+			<input id="estado" class="w3-input w3-border" type="text" formControlName="estado">
+
+			<p>
 				<label for="municipio">
-					<i class="fa fa-address-book"></i> Municipio
+					<i class="fa fa-map-signs"></i> Municipio
 				</label>
 			</p>
 			<input id="municipio" class="w3-input w3-border" type="text" formControlName="municipio">
 
-			<p>
-				<label for="parroquia">
-					<i class="fa fa-address-book"></i> Parroquia
-				</label>
-			</p>
-			<input id="parroquia" class="w3-input w3-border" type="text" formControlName="parroquia">
 
 	      <p>
 	      	<button class="w3-button w3-block w3-green w3-left-align w3-margin-top" type="submit">

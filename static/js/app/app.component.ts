@@ -9,8 +9,6 @@ import { FiltrosComponent, Filtros } from './VInmuebles/filtros_busqueda/filtros
 
 function compararFiltros(filtro1: Filtros, filtro2: Filtros): boolean{
 
-  alert(filtro1);
-  alert(filtro2);
 
   if (filtro1.antiguedadMax != filtro2.antiguedadMax){
     return false;
@@ -31,6 +29,24 @@ function compararFiltros(filtro1: Filtros, filtro2: Filtros): boolean{
     return false;
   }
   else if (filtro1.tipoDeInmueble != filtro2.tipoDeInmueble){
+    return false;
+  }
+  else if (filtro1.precioMin != filtro2.precioMin){
+    return false;
+  }
+  else if (filtro1.estado != filtro2.estado){
+    return false;
+  }
+  else if (filtro1.municipio != filtro2.municipio){
+    return false;
+  }
+  else if (filtro1.pais != filtro2.pais){
+    return false;
+  }
+  else if (filtro1.metrosCuadradosMin != filtro2.metrosCuadradosMin){
+    return false;
+  }
+  else if (filtro1.metrosCuadradosMax != filtro2.metrosCuadradosMax){
     return false;
   }
 
