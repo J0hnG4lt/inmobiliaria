@@ -3,7 +3,7 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 import { FiltrosService } from './filtros.service.js';
 
 // TODO: agregar validadores de form necesarios abajo
-// TODO: agregar la lista de opciones para los estados y municipios
+
 
 
 function construirPaises(data:any){
@@ -13,6 +13,22 @@ function construirPaises(data:any){
         
     }
     return paises;
+}
+
+function construirEstados(data:any){
+    let estados : string[] = [];
+    for(var objeto of data){
+        estados.push(objeto);
+    }
+    return estados;
+}
+
+function construirMunicipios(data:any){
+    let municipios : string[] = [];
+    for(var objeto of data){
+        municipios.push(objeto);
+    }
+    return municipios;
 }
 
 export class Filtros {
@@ -41,6 +57,9 @@ export class Filtros {
 export class FiltrosComponent implements OnInit {
     public myForm: FormGroup; // our model driven form
     public paises: string[]; // TODO: crear tipo
+    public estados: string[];
+    public municipios: string[];
+    //public paisSeleccionado: string;
 
     constructor(private _fb: FormBuilder,
     			private filtrosService : FiltrosService) { 
@@ -76,4 +95,18 @@ export class FiltrosComponent implements OnInit {
         // TODO: determinar si el form es valido antes de compartir
         this.filtrosService.compartirDatos(model);
     }
+
+    cargarEstados(pais : string){
+            this.filtrosService.cargarEstados(pais).subscribe(data => {
+                this.estados = construirEstados(data);
+            })
+            //this.paisSeleccionado = pais;
+    }
+
+    cargarMunicipios(pais : string, estado : string){
+            this.filtrosService.cargarMunicipios(pais,estado).subscribe(data => {
+                this.municipios = construirMunicipios(data);
+            })
+    }
+
 }

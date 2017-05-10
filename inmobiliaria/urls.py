@@ -21,8 +21,6 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf import settings
 from django.conf.urls.static import static
 
-# TODO: agregar el get request de estados dado un pais
-# TODO: agregar el get request de municipios dado un estado de un pais
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -30,6 +28,8 @@ urlpatterns = [
     url(r'^$', views.index, name="index"),
     url(r'^grid_inmuebles', views.grid_inmuebles, name="grid_inmuebles"),
     url(r'^vinmuebles/obtener_paises', views.obtener_paises, name="obtener_paises"),
+    url(r'^vinmuebles/obtener_estados/(?P<pais>\w+)', views.obtener_estados, name="obtener_estados"),
+    url(r'^vinmuebles/obtener_municipios/(?P<pais>\w+)/(?P<estado>\w+)/$', views.obtener_municipios, name="obtener_municipios"),
     url(r'^filtros', views.filtros, name="filtros"),
     url(r'^resumen_inmueble', views.resumen_inmueble, name="resumen_inmueble")   
 ]

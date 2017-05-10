@@ -35,7 +35,7 @@ function construirInmuebles(datos:any){
 }
 
 
-// TODO: agregar datos que faltan en la clase del componente inmueble
+
 
 /*
 Este template corresponde a una pagina

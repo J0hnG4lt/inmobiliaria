@@ -9,8 +9,6 @@ Este servicio pasa los filtros desde filtros.component al app.component y app.co
 pasa a cada grid.component como argumento en el template
 */
 
-// TODO: agregar el get request de estados dado un pais
-// TODO: agregar el get request de municipios dado un estado de un pais
 
 @Injectable()
 export class FiltrosService {
@@ -52,6 +50,18 @@ export class FiltrosService {
 	public cargarPaises(): Observable<any> {
 		
 		return this.http.get(this.server_url+"obtener_paises").map(this.extractData);
+		
+	}
+
+	public cargarEstados(pais : string): Observable<any> {
+		
+		return this.http.get(this.server_url+"obtener_estados/"+pais).map(this.extractData);
+		
+	}
+
+	public cargarMunicipios(pais : string, estado : string): Observable<any> {
+		
+		return this.http.get(this.server_url+"obtener_municipios/"+pais+"/"+estado).map(this.extractData);
 		
 	}
 

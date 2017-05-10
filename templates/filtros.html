@@ -1,8 +1,7 @@
 
 {% verbatim %}
 
-<!-- TODO: optener estados de un país con angular -->
-<!-- TODO: optener municipios de un estado con angular -->
+
 
 <div id="left" class="w3-container w3-padding w3-margin-top w3-card-2" style="background-color: #f1f1f1;">
 	<h5 style="text-align:center;height: 35px;background-color: #7EFF00;padding-top: 9px;"> <b>Filtros de búsqueda</b></h5>
@@ -102,29 +101,58 @@
 			<input id="precioMin" class="w3-input w3-border" type="text" formControlName="precioMin">
 
 			<p>
-				<label for="pais">
+				<label for="searchPais">
 					<i class="fa fa-map-marker"></i> País
 				</label>
 			</p>
-			<select id="searchPais" class="w3-select" name="tipo_inmueble" formControlName="pais">
-				<option *ngFor="let pais of paises" [value]="pais"> {{ pais }} </option>
+			<select id="searchPais" 
+					class="w3-select" 
+					name="searchPais" 
+					formControlName="pais"
+					(change)="cargarEstados($event.target.value)"
+					#paisSeleccionado>
+				<option *ngFor="let pais of paises" 
+						[value]="pais"> 
+							{{ pais }} 
+				</option>
 			</select>
 
 
 			<p>
-				<label for="estado">
+				<label for="searchEstado">
 					<i class="fa fa-map-pin"></i> Estado
 				</label>
 			</p>
-			<input id="estado" class="w3-input w3-border" type="text" formControlName="estado">
+			<select id="searchEstado" 
+					class="w3-select" 
+					name="searchEstado" 
+					formControlName="estado"
+					(change)="cargarMunicipios(paisSeleccionado.value,$event.target.value)">
+				<ng-container *ngIf="estados">
+					<option *ngFor="let estado of estados" 
+							[value]="estado"> 
+								{{ estado }} 
+					</option>
+				</ng-container>
+			</select>
+
 
 			<p>
-				<label for="municipio">
+				<label for="searchMunicipio">
 					<i class="fa fa-map-signs"></i> Municipio
 				</label>
 			</p>
-			<input id="municipio" class="w3-input w3-border" type="text" formControlName="municipio">
-
+			<select id="searchMunicipio" 
+					class="w3-select" 
+					name="searchMunicipio" 
+					formControlName="municipio">
+				<ng-container *ngIf="municipios">
+					<option *ngFor="let municipio of municipios" 
+							[value]="municipio"> 
+								{{ municipio }} 
+					</option>
+				</ng-container>
+			</select>
 
 	      <p>
 	      	<button class="w3-button w3-block w3-green w3-left-align w3-margin-top" type="submit">
