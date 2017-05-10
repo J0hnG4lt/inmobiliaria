@@ -3,6 +3,17 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 import { FiltrosService } from './filtros.service.js';
 
 // TODO: agregar validadores de form necesarios abajo
+// TODO: agregar la lista de opciones para los estados y municipios
+
+
+function construirPaises(data:any){
+    let paises : string[] = [];
+    for(var objeto of data){
+        paises.push(objeto.fields.nombrePais);
+        
+    }
+    return paises;
+}
 
 export class Filtros {
 
@@ -29,9 +40,16 @@ export class Filtros {
 })
 export class FiltrosComponent implements OnInit {
     public myForm: FormGroup; // our model driven form
+    public paises: string[]; // TODO: crear tipo
 
     constructor(private _fb: FormBuilder,
-    			private filtrosService : FiltrosService) { } // form builder simplify form initialization
+    			private filtrosService : FiltrosService) { 
+
+            this.filtrosService.cargarPaises().subscribe(data => {
+                  this.paises = construirPaises(data);
+            })
+
+    }
 
     ngOnInit() {
         

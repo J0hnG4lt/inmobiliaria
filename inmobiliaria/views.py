@@ -10,6 +10,9 @@ import json
 import sys
 from django.views.decorators.csrf import csrf_exempt
 
+# TODO: agregar el get request de estados dado un pais
+# TODO: agregar el get request de municipios dado un estado de un pais
+
 
 def index(request):
     template = loader.get_template('index.html')
@@ -22,6 +25,14 @@ def grid_inmuebles(request):
     template = loader.get_template('grid-inmuebles.html')
     context = dict()
     return HttpResponse(template.render(context))
+
+def obtener_paises(request):
+	paises = Pais.objects.all()
+	datos = serializers.serialize('json', paises)
+	datos = json.loads(datos)
+	datos = json.dumps(datos)
+
+	return HttpResponse(datos, content_type='application/json')
 
 def filtros(request):
     template = loader.get_template('filtros.html')
