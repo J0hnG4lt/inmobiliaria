@@ -8,7 +8,7 @@
 	<div id="filtrosForm">
 		
 		<form [formGroup]="myForm" novalidate (ngSubmit)="save(myForm.value, myForm.valid)">   
-			
+			<div>
 			<p>
 				<label for="searchOperations">	
 					Operación
@@ -154,6 +154,7 @@
 				</ng-container>
 			</select>
 
+			</div>
 	      <p>
 	      	<button class="w3-button w3-block w3-green w3-left-align w3-margin-top" type="submit">
 	      		<i class="fa fa-search w3-margin-right"></i> Actualizar búsqueda
