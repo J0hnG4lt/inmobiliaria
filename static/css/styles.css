@@ -306,3 +306,8 @@ a:hover,a:focus{
 	margin-top: 15%;
 }
 
+
+#filtrosForm {
+	overflow-y: auto;
+	max-height: 400px;
+}

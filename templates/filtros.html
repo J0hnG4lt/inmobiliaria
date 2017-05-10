@@ -2,7 +2,7 @@
 
 <div id="left" class="w3-container w3-padding w3-margin-top w3-card-2" style="background-color: #f1f1f1;">
 	<h5 style="text-align:center;height: 35px;background-color: #7EFF00;padding-top: 9px;"> <b>Filtros de búsqueda</b></h5>
-	<div class="w3-container">
+	<div id="filtrosForm">
 		
 		<form [formGroup]="myForm" novalidate (ngSubmit)="save(myForm.value, myForm.valid)">   
 			
@@ -69,11 +69,32 @@
 			<input id="numEstac" class="w3-input w3-border" type="number" value="0" name="estacs" formControlName="numeroEstacionamientos">
 
 			<p>
-				<label for="precio">
+				<label for="precioMax">
 					<i class="fa fa-usd"></i> Precio Máximo
 				</label>
 			</p>
-			<input id="precio" class="w3-input w3-border" type="text" formControlName="precioMax">
+			<input id="precioMax" class="w3-input w3-border" type="text" formControlName="precioMax">
+
+			<p>
+				<label for="precioMin">
+					<i class="fa fa-usd"></i> Precio Mínimo
+				</label>
+			</p>
+			<input id="precioMin" class="w3-input w3-border" type="text" formControlName="precioMin">
+
+			<p>
+				<label for="municipio">
+					<i class="fa fa-address-book"></i> Municipio
+				</label>
+			</p>
+			<input id="municipio" class="w3-input w3-border" type="text" formControlName="municipio">
+
+			<p>
+				<label for="parroquia">
+					<i class="fa fa-address-book"></i> Parroquia
+				</label>
+			</p>
+			<input id="parroquia" class="w3-input w3-border" type="text" formControlName="parroquia">
 
 	      <p>
 	      	<button class="w3-button w3-block w3-green w3-left-align w3-margin-top" type="submit">
