@@ -2,9 +2,14 @@
 {% verbatim %}
 
 <div class="grid_de_inmuebles">
-		<ng-container *ngIf="(inmuebles.length==0) && (numeroDePagina==0)">
+		<ng-container *ngIf="(inmuebles.length==0) && (numeroDePagina==0) && (requestAplicado)">
 			<div id="spinner"><i style="margin-top:30px;margin-left:auto;margin-right:auto;">No hay inmuebles con esas características</i></div>
 		</ng-container>
+
+		<ng-container *ngIf="(inmuebles.length==0) && (numeroDePagina==0) && (!requestAplicado)">
+			<div id="spinner"><i style="margin-top:30px;margin-left:auto;margin-right:auto;" class="fa fa-spinner fa-pulse fa-3x"></i></div>
+		</ng-container>
+
 		<div class="inmueble" style="height:auto;text-align:left" *ngFor="let inmuebl of inmuebles">
 			<my-inmueble [inmuebleActual]="inmuebl" ></my-inmueble>
 		</div>

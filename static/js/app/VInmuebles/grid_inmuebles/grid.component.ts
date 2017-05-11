@@ -55,6 +55,7 @@ export class GridComponent implements OnInit {
 	@Input() filtrosAplicados : Filtros;
 	numeroDePaginaSiguiente : number;
 	sePuedeCargarLaSiguiente : boolean = false;
+	requestAplicado : boolean = false;
 
 	constructor(private inmuebleService : InmuebleService){
 
@@ -64,10 +65,11 @@ export class GridComponent implements OnInit {
 	ngOnInit(): void {
 		if (this.aunFaltan){
 			// Cargar los inmuebles de esta pagina usando filtros
+			this.requestAplicado = false;
 	    	this.inmuebleService.loaddata(this.numeroDePagina, this.filtrosAplicados).subscribe(data => {
       			// Construyo los inmuebles con la data y arreglo el numero de pagina
 	      		this.inmuebles = construirInmuebles(data);
-
+	      		this.requestAplicado = true;
 	      		// Determina si hacen falta mas paginas
 	      		// Esto se hace para terminar la recursion
 	      		//  en el template.
@@ -77,9 +79,8 @@ export class GridComponent implements OnInit {
 					this.numeroDePaginaSiguiente = this.numeroDePagina;
 					this.numeroDePaginaSiguiente += 1;
 					this.sePuedeCargarLaSiguiente = true;
-		    }
-
-    	)
+		    })
+		    
 	    }
 
 	    }
