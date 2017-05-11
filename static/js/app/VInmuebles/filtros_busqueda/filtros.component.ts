@@ -56,7 +56,7 @@ export class Filtros {
 })
 export class FiltrosComponent implements OnInit {
     public myForm: FormGroup; // our model driven form
-    public paises: string[]; // TODO: crear tipo
+    public paises: string[]; 
     public estados: string[];
     public municipios: string[];
     //public paisSeleccionado: string;
@@ -67,6 +67,9 @@ export class FiltrosComponent implements OnInit {
             this.filtrosService.cargarPaises().subscribe(data => {
                   this.paises = construirPaises(data);
             })
+
+            // Por los momentos sólo se usa a Venezuela
+            this.cargarEstados("Venezuela");
 
     }
 
