@@ -48,7 +48,7 @@ Este template corresponde a una pagina
 })
 export class GridComponent implements OnInit { 
 	
-	inmuebles : any[];
+	inmuebles : any[] = [];
 	enElFondo : boolean = false;
 	aunFaltan : boolean = true;
 	@Input() numeroDePagina : number;
