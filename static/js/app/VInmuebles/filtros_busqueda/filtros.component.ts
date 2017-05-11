@@ -112,4 +112,10 @@ export class FiltrosComponent implements OnInit {
             })
     }
 
+    vaciarFormulario(){
+        //this.estados = void 0; // Descomentar si se usan otros países
+        this.municipios = void 0;
+        this.myForm.reset();
+    }
+
 }
