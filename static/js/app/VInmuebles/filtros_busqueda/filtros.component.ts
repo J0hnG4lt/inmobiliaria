@@ -40,8 +40,7 @@ export class Filtros {
     numeroBanyos: number;
     numeroHabitaciones: number;
     numeroEstacionamientos: number;
-    metrosCuadradosMin: number;
-    metrosCuadradosMax: number;
+    metrosCuadrados: number;
     precioMax: number;
     precioMin: number;
     pais: string;
@@ -85,8 +84,7 @@ export class FiltrosComponent implements OnInit {
 	        numeroEstacionamientos: new FormControl('', []),
 	        precioMax: new FormControl('', []),
             precioMin: new FormControl('', []),
-            metrosCuadradosMin: new FormControl('', []),
-            metrosCuadradosMax: new FormControl('', []),
+            metrosCuadrados: new FormControl('', []),
             pais: new FormControl('', []),
             estado: new FormControl('', []),
             municipio: new FormControl('', [])

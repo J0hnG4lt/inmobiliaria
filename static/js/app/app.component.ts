@@ -43,10 +43,7 @@ function compararFiltros(filtro1: Filtros, filtro2: Filtros): boolean{
   else if (filtro1.pais != filtro2.pais){
     return false;
   }
-  else if (filtro1.metrosCuadradosMin != filtro2.metrosCuadradosMin){
-    return false;
-  }
-  else if (filtro1.metrosCuadradosMax != filtro2.metrosCuadradosMax){
+  else if (filtro1.metrosCuadrados != filtro2.metrosCuadrados){
     return false;
   }
 

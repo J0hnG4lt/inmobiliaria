@@ -91,8 +91,7 @@ def vInmuebles(request, pagina=None) :
 		# Estos nombres de los get dependen de los nombres usados en 
 		#   filtros.component.ts
 		antiguedadMax = filtros.get("antiguedadMax", "")
-		metrosCuadradosMin = filtros.get("metrosCuadradosMin", "")
-		metrosCuadradosMax = filtros.get("metrosCuadradosMax", "")
+		metrosCuadrados = filtros.get("metrosCuadrados", "")
 		numeroBanyos = filtros.get("numeroBanyos", "")
 		numeroEstacionamientos = filtros.get("numeroEstacionamientos", "")
 		numeroHabitaciones = filtros.get("numeroHabitaciones", "")
@@ -110,11 +109,12 @@ def vInmuebles(request, pagina=None) :
 		if antiguedadMax:
 			filtrosParams["antiguedadDeInmueble__lt"] = antiguedadMax
 
-		if metrosCuadradosMin:
-			filtrosParams["metrosDeConstruccion__gt"] = metrosCuadradosMin
+		if metrosCuadrados:
+			intervalos = {0:70,70:95,95:100,100:200}
+			filtrosParams["metrosDeConstruccion__gt"] = metrosCuadrados
+			if int(metrosCuadrados) in intervalos :
+				filtrosParams["metrosDeConstruccion__lt"] = intervalos[metrosCuadrados]
 
-		if metrosCuadradosMax:
-			filtrosParams["metrosDeConstruccion__lt"] = metrosCuadradosMax
 
 		if numeroBanyos:
 			filtrosParams["numeroDeBanyos"] = numeroBanyos
