@@ -28,8 +28,8 @@ urlpatterns = [
     url(r'^$', views.index, name="index"),
     url(r'^grid_inmuebles', views.grid_inmuebles, name="grid_inmuebles"),
     url(r'^vinmuebles/obtener_paises', views.obtener_paises, name="obtener_paises"),
-    url(r'^vinmuebles/obtener_estados/(?P<pais>\w+)', views.obtener_estados, name="obtener_estados"),
-    url(r'^vinmuebles/obtener_municipios/(?P<pais>\w+)/(?P<estado>\w+)/$', views.obtener_municipios, name="obtener_municipios"),
+    url(r'^vinmuebles/obtener_estados/(?P<pais>[\w\d\s]+)', views.obtener_estados, name="obtener_estados"),
+    url(r'^vinmuebles/obtener_municipios/(?P<pais>[\w\d\s]+)/(?P<estado>[\w\d\s]+)/$', views.obtener_municipios, name="obtener_municipios"),
     url(r'^filtros', views.filtros, name="filtros"),
     url(r'^resumen_inmueble', views.resumen_inmueble, name="resumen_inmueble")   
 ]
